@@ -1,0 +1,156 @@
+{
+  "dataset_id": "acme_finops_bench",
+  "description": "Metadata-only manifest of the synthetic ACME corpus referenced by the benchmark's GT documents. The evaluator's built-in mock retriever does not need the actual document contents — it uses doc_id and filename from the ingested queries. This manifest is provided so a real retrieval system can be seeded with realistic-looking documents.",
+  "documents": [
+    {
+      "doc_id": "doc_acme_delegations",
+      "filename": "delegation_of_authority_v4.pdf",
+      "description": "Delegation of Authority Matrix v4 — spend approval levels by role."
+    },
+    {
+      "doc_id": "doc_acme_procurement",
+      "filename": "procurement_policy_2025.pdf",
+      "description": "ACME Procurement Policy 2025 — sourcing rules, tender thresholds."
+    },
+    {
+      "doc_id": "doc_acme_vendor_ob",
+      "filename": "vendor_onboarding_playbook.pdf",
+      "description": "Vendor Onboarding Playbook — KYC, sanctions, tax, risk scoring."
+    },
+    {
+      "doc_id": "doc_acme_vendor_risk",
+      "filename": "vendor_risk_framework.pdf",
+      "description": "Third-Party Risk Framework — tiers, review cadence, exit plans."
+    },
+    {
+      "doc_id": "doc_acme_expenses",
+      "filename": "expense_reimbursement_policy.pdf",
+      "description": "Employee Expense & Reimbursement Policy — per-diems, receipts."
+    },
+    {
+      "doc_id": "doc_acme_travel",
+      "filename": "travel_policy_global.pdf",
+      "description": "Global Travel Policy — class of travel, booking channels."
+    },
+    {
+      "doc_id": "doc_acme_sox",
+      "filename": "sox_controls_matrix.pdf",
+      "description": "SOX Controls Matrix — key controls, control owners, frequency."
+    },
+    {
+      "doc_id": "doc_acme_revenue",
+      "filename": "revenue_recognition_asc606.pdf",
+      "description": "Revenue Recognition (ASC 606) internal guidance."
+    },
+    {
+      "doc_id": "doc_acme_capex",
+      "filename": "capex_policy_v3.pdf",
+      "description": "Capital Expenditure Policy v3 — thresholds, business-case template."
+    },
+    {
+      "doc_id": "doc_acme_opex",
+      "filename": "opex_management_guide.pdf",
+      "description": "Operating Expenditure Management Guide."
+    },
+    {
+      "doc_id": "doc_acme_close",
+      "filename": "monthly_close_calendar.pdf",
+      "description": "Monthly / Quarterly Close Calendar — WD-1..WD-6 milestones."
+    },
+    {
+      "doc_id": "doc_acme_coa",
+      "filename": "chart_of_accounts_master.xlsx",
+      "description": "Global Chart of Accounts — GL accounts and cost centres."
+    },
+    {
+      "doc_id": "doc_acme_budget",
+      "filename": "budget_planning_handbook.pdf",
+      "description": "Annual Budget & Forecast Handbook."
+    },
+    {
+      "doc_id": "doc_acme_aml",
+      "filename": "aml_policy.pdf",
+      "description": "Anti-Money Laundering Policy — screening, red flags, escalation."
+    },
+    {
+      "doc_id": "doc_acme_sanctions",
+      "filename": "sanctions_screening_policy.pdf",
+      "description": "Sanctions Screening Policy — OFAC/EU/UN lists, hit resolution."
+    },
+    {
+      "doc_id": "doc_acme_abac",
+      "filename": "anti_bribery_corruption_policy.pdf",
+      "description": "Anti-Bribery & Corruption Policy — gifts, hospitality, FCPA/UKBA."
+    },
+    {
+      "doc_id": "doc_acme_gifts",
+      "filename": "gifts_hospitality_register.xlsx",
+      "description": "Gifts & Hospitality Register — thresholds and log."
+    },
+    {
+      "doc_id": "doc_acme_code",
+      "filename": "code_of_conduct.pdf",
+      "description": "ACME Code of Conduct."
+    },
+    {
+      "doc_id": "doc_acme_tax",
+      "filename": "transfer_pricing_policy.pdf",
+      "description": "Transfer Pricing Policy — intercompany transactions."
+    },
+    {
+      "doc_id": "doc_acme_vat",
+      "filename": "vat_guidance_eu.pdf",
+      "description": "EU VAT Guidance — reverse charge, invoicing rules."
+    },
+    {
+      "doc_id": "doc_acme_treasury",
+      "filename": "treasury_policy.pdf",
+      "description": "Treasury Policy — cash mgmt, FX hedging, counter-party limits."
+    },
+    {
+      "doc_id": "doc_acme_credit",
+      "filename": "customer_credit_policy.pdf",
+      "description": "Customer Credit Policy — limits, dunning, write-off."
+    },
+    {
+      "doc_id": "doc_acme_ap",
+      "filename": "accounts_payable_sop.pdf",
+      "description": "Accounts Payable SOP — 3-way match, PO exceptions."
+    },
+    {
+      "doc_id": "doc_acme_ar",
+      "filename": "accounts_receivable_sop.pdf",
+      "description": "Accounts Receivable SOP — invoicing, collections, disputes."
+    },
+    {
+      "doc_id": "doc_acme_records",
+      "filename": "records_retention_schedule.pdf",
+      "description": "Records Retention Schedule — retention periods by record type."
+    },
+    {
+      "doc_id": "doc_acme_audit",
+      "filename": "internal_audit_charter.pdf",
+      "description": "Internal Audit Charter — scope, independence, reporting."
+    },
+    {
+      "doc_id": "doc_acme_risk",
+      "filename": "enterprise_risk_framework.pdf",
+      "description": "Enterprise Risk Management Framework — risk appetite, taxonomy."
+    },
+    {
+      "doc_id": "doc_acme_kri",
+      "filename": "kri_thresholds_2025.xlsx",
+      "description": "Key Risk Indicator thresholds — 2025."
+    },
+    {
+      "doc_id": "doc_acme_whistle",
+      "filename": "whistleblowing_policy.pdf",
+      "description": "Whistleblowing / Speak-Up Policy."
+    },
+    {
+      "doc_id": "doc_acme_privacy",
+      "filename": "data_privacy_notice_employees.pdf",
+      "description": "Employee Data Privacy Notice — GDPR/CCPA obligations."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+query_id,query,gt_answer,categories,difficulty,fact_id,fact_text,fact_doc_id,doc_id,filename,page_numbers
+q_01,When was the EU AI Act published?,12 July 2024,"temporal,lookup",easy,f1,The EU AI Act was published on 12 July 2024.,doc_act,doc_act,eu_ai_act.pdf,3
+q_02,What is a high-risk AI system?,Assessment required,definition,medium,f2,High-risk systems must undergo conformity assessment.,doc_act,doc_act,eu_ai_act.pdf,22
+q_03,How does the AI Act interact with GDPR?,Applies without prejudice to GDPR,multi-hop,hard,f3,AI Act applies without prejudice to GDPR.,doc_act,doc_act,eu_ai_act.pdf,6
+q_03,How does the AI Act interact with GDPR?,Applies without prejudice to GDPR,multi-hop,hard,f4,GDPR governs personal data processing.,doc_gdpr,doc_gdpr,gdpr.pdf,10

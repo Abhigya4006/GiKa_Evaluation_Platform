@@ -1,0 +1,166 @@
+{
+  "dataset_id": "novacorp_hr_bench",
+  "description": "Metadata-only manifest of the synthetic NovaCorp HR corpus referenced by the benchmark's GT documents. The evaluator's built-in mock retriever does not need actual document contents — it uses doc_id and filename from the ingested queries. Provided so a real retrieval system can be seeded with realistic-looking documents.",
+  "documents": [
+    {
+      "doc_id": "doc_nova_handbook",
+      "filename": "employee_handbook_2025.pdf",
+      "description": "NovaCorp Employee Handbook 2025 — general employment terms."
+    },
+    {
+      "doc_id": "doc_nova_code",
+      "filename": "code_of_conduct.pdf",
+      "description": "Code of Conduct — behavioural expectations, disciplinary process."
+    },
+    {
+      "doc_id": "doc_nova_benefits_us",
+      "filename": "benefits_guide_us_2025.pdf",
+      "description": "US Benefits Guide 2025 — medical, dental, 401(k), FSA/HSA."
+    },
+    {
+      "doc_id": "doc_nova_benefits_eu",
+      "filename": "benefits_guide_eu_2025.pdf",
+      "description": "EU Benefits Guide 2025 — statutory leave, pensions, healthcare."
+    },
+    {
+      "doc_id": "doc_nova_benefits_in",
+      "filename": "benefits_guide_india_2025.pdf",
+      "description": "India Benefits Guide 2025 — EPF, gratuity, medical, LTA."
+    },
+    {
+      "doc_id": "doc_nova_pto",
+      "filename": "pto_policy_global.pdf",
+      "description": "Global Paid Time Off policy — vacation, sick, personal days."
+    },
+    {
+      "doc_id": "doc_nova_leave",
+      "filename": "leave_types_matrix.pdf",
+      "description": "Leave Types Matrix — parental, bereavement, jury duty, sabbatical."
+    },
+    {
+      "doc_id": "doc_nova_parental",
+      "filename": "parental_leave_policy.pdf",
+      "description": "Parental Leave Policy — primary/secondary caregiver terms."
+    },
+    {
+      "doc_id": "doc_nova_remote",
+      "filename": "remote_work_policy.pdf",
+      "description": "Remote Work Policy — eligibility, equipment, stipends."
+    },
+    {
+      "doc_id": "doc_nova_hybrid",
+      "filename": "hybrid_work_guidelines.pdf",
+      "description": "Hybrid Work Guidelines — office days, meeting norms."
+    },
+    {
+      "doc_id": "doc_nova_comp",
+      "filename": "compensation_philosophy.pdf",
+      "description": "Compensation Philosophy — bands, market data, review cycles."
+    },
+    {
+      "doc_id": "doc_nova_bonus",
+      "filename": "annual_bonus_plan.pdf",
+      "description": "Annual Bonus Plan — target %, weighting, payout mechanics."
+    },
+    {
+      "doc_id": "doc_nova_equity",
+      "filename": "equity_plan_rsus.pdf",
+      "description": "Equity Plan (RSU) — grants, vesting schedule, forfeiture."
+    },
+    {
+      "doc_id": "doc_nova_payroll",
+      "filename": "payroll_calendar_2025.pdf",
+      "description": "Payroll Calendar 2025 — pay periods, cutoff dates by country."
+    },
+    {
+      "doc_id": "doc_nova_expenses",
+      "filename": "expense_reimbursement.pdf",
+      "description": "Employee Expense & Reimbursement Policy."
+    },
+    {
+      "doc_id": "doc_nova_onboarding",
+      "filename": "new_hire_onboarding.pdf",
+      "description": "New Hire Onboarding — day 1 checklist, 30/60/90 milestones."
+    },
+    {
+      "doc_id": "doc_nova_offboarding",
+      "filename": "offboarding_checklist.pdf",
+      "description": "Offboarding Checklist — exit interview, asset return, access."
+    },
+    {
+      "doc_id": "doc_nova_perf",
+      "filename": "performance_management.pdf",
+      "description": "Performance Management — cycles, ratings, calibration."
+    },
+    {
+      "doc_id": "doc_nova_pip",
+      "filename": "performance_improvement_plan.pdf",
+      "description": "Performance Improvement Plan — process, duration, outcomes."
+    },
+    {
+      "doc_id": "doc_nova_learning",
+      "filename": "learning_and_development.pdf",
+      "description": "Learning & Development — budget, catalog, tuition reimbursement."
+    },
+    {
+      "doc_id": "doc_nova_referral",
+      "filename": "employee_referral_program.pdf",
+      "description": "Employee Referral Program — bonus tiers, eligibility."
+    },
+    {
+      "doc_id": "doc_nova_diversity",
+      "filename": "diversity_equity_inclusion.pdf",
+      "description": "DEI Policy — commitments, ERGs, reporting."
+    },
+    {
+      "doc_id": "doc_nova_harassment",
+      "filename": "anti_harassment_policy.pdf",
+      "description": "Anti-Harassment & Anti-Discrimination Policy."
+    },
+    {
+      "doc_id": "doc_nova_grievance",
+      "filename": "grievance_procedure.pdf",
+      "description": "Grievance / Complaints Procedure."
+    },
+    {
+      "doc_id": "doc_nova_it_aup",
+      "filename": "it_acceptable_use.pdf",
+      "description": "IT Acceptable Use Policy — devices, accounts, monitoring."
+    },
+    {
+      "doc_id": "doc_nova_byod",
+      "filename": "byod_policy.pdf",
+      "description": "Bring-Your-Own-Device Policy — mobile, MDM, stipend."
+    },
+    {
+      "doc_id": "doc_nova_security",
+      "filename": "information_security_policy.pdf",
+      "description": "Information Security Policy — passwords, MFA, incident reporting."
+    },
+    {
+      "doc_id": "doc_nova_privacy",
+      "filename": "employee_privacy_notice.pdf",
+      "description": "Employee Data Privacy Notice — GDPR/CCPA obligations."
+    },
+    {
+      "doc_id": "doc_nova_contractor",
+      "filename": "contractor_engagement.pdf",
+      "description": "Contractor / Independent-Worker Engagement Policy."
+    },
+    {
+      "doc_id": "doc_nova_immigration",
+      "filename": "immigration_and_relocation.pdf",
+      "description": "Immigration & Relocation Support — visas, moving support."
+    },
+    {
+      "doc_id": "doc_nova_hs",
+      "filename": "workplace_health_safety.pdf",
+      "description": "Workplace Health & Safety Policy."
+    },
+    {
+      "doc_id": "doc_nova_wellness",
+      "filename": "wellness_and_eap.pdf",
+      "description": "Wellness Program & Employee Assistance Program."
+    }
+  ]
+}

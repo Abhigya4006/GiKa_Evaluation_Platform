@@ -1,0 +1,3401 @@
+{
+  "dataset_id": "acme_finops_bench",
+  "name": "ACME Corp Finance & Compliance Benchmark",
+  "version": "1.0.0",
+  "domain": "enterprise_finance_compliance",
+  "source": "synthetic",
+  "metric_config": {
+    "recall_at_k": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "em_normalize": true
+  },
+  "leaderboard": [
+    {
+      "system_name": "BaselineRAG",
+      "metric": "f1",
+      "value": 0.68
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "exact_match",
+      "value": 0.51
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "recall",
+      "value": 0.72
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "document_recall",
+      "value": 0.65
+    },
+    {
+      "system_name": "EnterpriseRAG",
+      "metric": "f1",
+      "value": 0.77
+    },
+    {
+      "system_name": "EnterpriseRAG",
+      "metric": "exact_match",
+      "value": 0.62
+    },
+    {
+      "system_name": "EnterpriseRAG",
+      "metric": "recall",
+      "value": 0.81
+    },
+    {
+      "system_name": "EnterpriseRAG",
+      "metric": "document_recall",
+      "value": 0.74
+    }
+  ],
+  "items": [
+    {
+      "query_id": "acmf_q0001",
+      "query": "What is the maximum single-invoice spend a Cost Centre Manager can approve?",
+      "gt_answer": "USD 25,000",
+      "categories": [
+        "numerical",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0001",
+          "text": "Cost Centre Managers may approve a single invoice up to USD 25,000.",
+          "doc_id": "doc_acme_delegations"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_delegations",
+          "filename": "delegation_of_authority_v4.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0002",
+      "query": "Which role signs off on capital expenditure requests above USD 1 million?",
+      "gt_answer": "The CFO",
+      "categories": [
+        "entity-centric",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0002",
+          "text": "CAPEX requests above USD 1,000,000 require CFO approval.",
+          "doc_id": "doc_acme_delegations"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_delegations",
+          "filename": "delegation_of_authority_v4.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0003",
+      "query": "For a USD 400,000 vendor contract, which two approvers are required per the Delegation of Authority?",
+      "gt_answer": "The relevant Business Unit VP and the Group Financial Controller",
+      "categories": [
+        "multi-hop",
+        "entity-centric",
+        "numerical"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0003",
+          "text": "Vendor contracts between USD 250,000 and USD 500,000 require BU VP approval.",
+          "doc_id": "doc_acme_delegations"
+        },
+        {
+          "fact_id": "acmf_f0004",
+          "text": "Vendor contracts above USD 250,000 also require Group Financial Controller approval.",
+          "doc_id": "doc_acme_delegations"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_delegations",
+          "filename": "delegation_of_authority_v4.pdf",
+          "page_numbers": [
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0004",
+      "query": "Does the Delegation of Authority Matrix apply to all ACME subsidiaries?",
+      "gt_answer": "Yes, it applies to all consolidated subsidiaries",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0005",
+          "text": "The Delegation of Authority Matrix applies to all consolidated ACME subsidiaries worldwide.",
+          "doc_id": "doc_acme_delegations"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_delegations",
+          "filename": "delegation_of_authority_v4.pdf",
+          "page_numbers": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0005",
+      "query": "Which document version of the Delegation of Authority Matrix is currently in force?",
+      "gt_answer": "Version 4",
+      "categories": [
+        "temporal",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0006",
+          "text": "The Delegation of Authority Matrix in force is version 4, effective January 2025.",
+          "doc_id": "doc_acme_delegations"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_delegations",
+          "filename": "delegation_of_authority_v4.pdf",
+          "page_numbers": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0006",
+      "query": "What is the sourcing threshold above which a formal tender is required?",
+      "gt_answer": "USD 100,000",
+      "categories": [
+        "numerical",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0007",
+          "text": "Any sourcing event above USD 100,000 requires a formal competitive tender.",
+          "doc_id": "doc_acme_procurement"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0007",
+      "query": "How many suppliers must be invited to a competitive tender for goods valued between USD 100k and USD 1M?",
+      "gt_answer": "At least three suppliers",
+      "categories": [
+        "numerical",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0008",
+          "text": "Tenders between USD 100,000 and USD 1,000,000 require a minimum of three invited suppliers.",
+          "doc_id": "doc_acme_procurement"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0008",
+      "query": "When is a single-source procurement justification memo required?",
+      "gt_answer": "For any award without a competitive tender above USD 50,000",
+      "categories": [
+        "definition",
+        "numerical"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0009",
+          "text": "A single-source justification memo is required for any award above USD 50,000 without competitive tender.",
+          "doc_id": "doc_acme_procurement"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0009",
+      "query": "What is the minimum retention period for procurement bid records?",
+      "gt_answer": "Seven years",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0010",
+          "text": "Procurement bid records must be retained for a minimum of seven years.",
+          "doc_id": "doc_acme_procurement"
+        },
+        {
+          "fact_id": "acmf_f0011",
+          "text": "Records Retention Schedule mandates seven-year retention for sourcing files.",
+          "doc_id": "doc_acme_records"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            22
+          ]
+        },
+        {
+          "doc_id": "doc_acme_records",
+          "filename": "records_retention_schedule.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0010",
+      "query": "Who owns the Procurement Policy and is responsible for its annual review?",
+      "gt_answer": "The Chief Procurement Officer",
+      "categories": [
+        "entity-centric",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0012",
+          "text": "The Chief Procurement Officer owns the Procurement Policy and reviews it annually.",
+          "doc_id": "doc_acme_procurement"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0011",
+      "query": "Compare the tender requirements for IT services versus professional services.",
+      "gt_answer": "IT services above USD 100k require competitive tender with security assessment; professional services above USD 100k require tender but no security assessment",
+      "categories": [
+        "comparative",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0013",
+          "text": "IT services above USD 100,000 require a competitive tender with an information-security assessment.",
+          "doc_id": "doc_acme_procurement"
+        },
+        {
+          "fact_id": "acmf_f0014",
+          "text": "Professional services above USD 100,000 require a competitive tender but not an information-security assessment.",
+          "doc_id": "doc_acme_procurement"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            14,
+            15
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0012",
+      "query": "Is emergency procurement permitted?",
+      "gt_answer": "Yes, with retroactive approval within five business days by the Chief Procurement Officer",
+      "categories": [
+        "definition",
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0015",
+          "text": "Emergency procurement is permitted when a business-continuity threat exists.",
+          "doc_id": "doc_acme_procurement"
+        },
+        {
+          "fact_id": "acmf_f0016",
+          "text": "Emergency procurement requires retroactive approval by the CPO within five business days.",
+          "doc_id": "doc_acme_procurement"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            18
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0013",
+      "query": "What KYC documents must a new vendor provide during onboarding?",
+      "gt_answer": "Certificate of incorporation, ultimate beneficial ownership disclosure, and tax registration",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0017",
+          "text": "Vendors must provide a certificate of incorporation at onboarding.",
+          "doc_id": "doc_acme_vendor_ob"
+        },
+        {
+          "fact_id": "acmf_f0018",
+          "text": "Vendors must disclose ultimate beneficial ownership at onboarding.",
+          "doc_id": "doc_acme_vendor_ob"
+        },
+        {
+          "fact_id": "acmf_f0019",
+          "text": "Vendors must provide a tax registration certificate at onboarding.",
+          "doc_id": "doc_acme_vendor_ob"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_vendor_ob",
+          "filename": "vendor_onboarding_playbook.pdf",
+          "page_numbers": [
+            5,
+            6,
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0014",
+      "query": "Against which sanctions lists are new vendors screened?",
+      "gt_answer": "OFAC, EU consolidated list, and UN Security Council list",
+      "categories": [
+        "entity-centric",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0020",
+          "text": "New vendors are screened against the OFAC SDN list.",
+          "doc_id": "doc_acme_sanctions"
+        },
+        {
+          "fact_id": "acmf_f0021",
+          "text": "New vendors are screened against the EU consolidated sanctions list.",
+          "doc_id": "doc_acme_sanctions"
+        },
+        {
+          "fact_id": "acmf_f0022",
+          "text": "New vendors are screened against the UN Security Council sanctions list.",
+          "doc_id": "doc_acme_sanctions"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_sanctions",
+          "filename": "sanctions_screening_policy.pdf",
+          "page_numbers": [
+            3,
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0015",
+      "query": "Which vendor tier requires an on-site audit?",
+      "gt_answer": "Tier 1 (critical) vendors",
+      "categories": [
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0023",
+          "text": "Tier 1 (critical) vendors require an on-site audit as part of due diligence.",
+          "doc_id": "doc_acme_vendor_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_vendor_risk",
+          "filename": "vendor_risk_framework.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0016",
+      "query": "How often must Tier 2 vendors be re-assessed?",
+      "gt_answer": "Every two years",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0024",
+          "text": "Tier 2 vendors must be re-assessed at least every two years.",
+          "doc_id": "doc_acme_vendor_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_vendor_risk",
+          "filename": "vendor_risk_framework.pdf",
+          "page_numbers": [
+            14
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0017",
+      "query": "What is the required action when a sanctions screening hit is confirmed?",
+      "gt_answer": "Freeze payments, escalate to the Chief Compliance Officer, and file a report with the relevant financial-intelligence unit if required",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0025",
+          "text": "Confirmed sanctions hits require immediate freeze of all payments to the vendor.",
+          "doc_id": "doc_acme_sanctions"
+        },
+        {
+          "fact_id": "acmf_f0026",
+          "text": "Confirmed sanctions hits must be escalated to the Chief Compliance Officer.",
+          "doc_id": "doc_acme_sanctions"
+        },
+        {
+          "fact_id": "acmf_f0027",
+          "text": "Confirmed sanctions hits may require reporting to the relevant financial-intelligence unit.",
+          "doc_id": "doc_acme_aml"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_sanctions",
+          "filename": "sanctions_screening_policy.pdf",
+          "page_numbers": [
+            8
+          ]
+        },
+        {
+          "doc_id": "doc_acme_aml",
+          "filename": "aml_policy.pdf",
+          "page_numbers": [
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0018",
+      "query": "Are politically exposed persons (PEPs) prohibited as vendor beneficial owners?",
+      "gt_answer": "No, but they trigger enhanced due diligence and Chief Compliance Officer sign-off",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0028",
+          "text": "PEP-linked vendors are not automatically prohibited.",
+          "doc_id": "doc_acme_aml"
+        },
+        {
+          "fact_id": "acmf_f0029",
+          "text": "PEP-linked vendors require enhanced due diligence.",
+          "doc_id": "doc_acme_aml"
+        },
+        {
+          "fact_id": "acmf_f0030",
+          "text": "PEP-linked vendor engagements require sign-off from the Chief Compliance Officer.",
+          "doc_id": "doc_acme_aml"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_aml",
+          "filename": "aml_policy.pdf",
+          "page_numbers": [
+            7,
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0019",
+      "query": "What is the maximum vendor risk score that still allows automated approval?",
+      "gt_answer": "Below 40 out of 100",
+      "categories": [
+        "numerical",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0031",
+          "text": "Vendor risk scores below 40 out of 100 are eligible for automated onboarding approval.",
+          "doc_id": "doc_acme_vendor_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_vendor_risk",
+          "filename": "vendor_risk_framework.pdf",
+          "page_numbers": [
+            17
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0020",
+      "query": "Compare the exit-plan requirements for Tier 1 and Tier 3 vendors.",
+      "gt_answer": "Tier 1 vendors require a documented and tested exit plan; Tier 3 vendors require only a documented exit plan",
+      "categories": [
+        "comparative",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0032",
+          "text": "Tier 1 vendors require a documented and annually tested exit plan.",
+          "doc_id": "doc_acme_vendor_risk"
+        },
+        {
+          "fact_id": "acmf_f0033",
+          "text": "Tier 3 vendors require a documented exit plan but no scheduled testing.",
+          "doc_id": "doc_acme_vendor_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_vendor_risk",
+          "filename": "vendor_risk_framework.pdf",
+          "page_numbers": [
+            19,
+            20
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0021",
+      "query": "What is the per-diem meal allowance for domestic travel in the United States?",
+      "gt_answer": "USD 75 per day",
+      "categories": [
+        "numerical",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0034",
+          "text": "The per-diem meal allowance for US domestic travel is USD 75 per day.",
+          "doc_id": "doc_acme_expenses"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_expenses",
+          "filename": "expense_reimbursement_policy.pdf",
+          "page_numbers": [
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0022",
+      "query": "What is the per-diem meal allowance for international travel to London?",
+      "gt_answer": "GBP 65 per day",
+      "categories": [
+        "numerical",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0035",
+          "text": "The per-diem meal allowance for travel to London is GBP 65 per day.",
+          "doc_id": "doc_acme_expenses"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_expenses",
+          "filename": "expense_reimbursement_policy.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0023",
+      "query": "Are alcohol expenses reimbursable?",
+      "gt_answer": "Only when incurred as part of an approved client entertainment event",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0036",
+          "text": "Alcohol is reimbursable only within an approved client entertainment expense.",
+          "doc_id": "doc_acme_expenses"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_expenses",
+          "filename": "expense_reimbursement_policy.pdf",
+          "page_numbers": [
+            17
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0024",
+      "query": "By what deadline must expense reports be submitted after a business trip?",
+      "gt_answer": "Within 30 calendar days of trip end",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0037",
+          "text": "Expense reports must be submitted within 30 calendar days of the trip end date.",
+          "doc_id": "doc_acme_expenses"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_expenses",
+          "filename": "expense_reimbursement_policy.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0025",
+      "query": "Which class of flight is permitted for a Director travelling more than eight hours?",
+      "gt_answer": "Business class",
+      "categories": [
+        "entity-centric",
+        "numerical",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0038",
+          "text": "Directors may travel business class on flights exceeding eight hours.",
+          "doc_id": "doc_acme_travel"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_travel",
+          "filename": "travel_policy_global.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0026",
+      "query": "May employees book flights outside the corporate travel agency?",
+      "gt_answer": "Only with pre-approval by the manager and Travel Manager",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0039",
+          "text": "Bookings outside the corporate travel agency require prior manager approval.",
+          "doc_id": "doc_acme_travel"
+        },
+        {
+          "fact_id": "acmf_f0040",
+          "text": "Bookings outside the corporate travel agency also require Travel Manager approval.",
+          "doc_id": "doc_acme_travel"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_travel",
+          "filename": "travel_policy_global.pdf",
+          "page_numbers": [
+            12,
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0027",
+      "query": "What is the receipt threshold above which employees must attach a scanned receipt?",
+      "gt_answer": "USD 25",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0041",
+          "text": "Scanned receipts must be attached for any expense above USD 25.",
+          "doc_id": "doc_acme_expenses"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_expenses",
+          "filename": "expense_reimbursement_policy.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0028",
+      "query": "How does travel-policy compliance differ between full-time employees and contractors?",
+      "gt_answer": "Contractors follow their master services agreement; employees follow ACME Travel Policy",
+      "categories": [
+        "comparative",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0042",
+          "text": "Full-time employees are subject to the ACME Travel Policy.",
+          "doc_id": "doc_acme_travel"
+        },
+        {
+          "fact_id": "acmf_f0043",
+          "text": "Contractor travel is governed by the terms of their master services agreement, not ACME Travel Policy.",
+          "doc_id": "doc_acme_travel"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_travel",
+          "filename": "travel_policy_global.pdf",
+          "page_numbers": [
+            3,
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0029",
+      "query": "How many key SOX controls does ACME maintain across the revenue cycle?",
+      "gt_answer": "24 key controls",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0044",
+          "text": "ACME maintains 24 key SOX controls across the revenue cycle.",
+          "doc_id": "doc_acme_sox"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_sox",
+          "filename": "sox_controls_matrix.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0030",
+      "query": "How frequently is control R-07 (three-way match) tested?",
+      "gt_answer": "Quarterly",
+      "categories": [
+        "temporal",
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0045",
+          "text": "Control R-07 (three-way match) is tested on a quarterly cadence.",
+          "doc_id": "doc_acme_sox"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_sox",
+          "filename": "sox_controls_matrix.pdf",
+          "page_numbers": [
+            15
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0031",
+      "query": "Under ASC 606, how is revenue recognized for a software subscription?",
+      "gt_answer": "Rateably over the subscription term",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0046",
+          "text": "Under ASC 606, revenue for software subscriptions is recognised rateably over the subscription term.",
+          "doc_id": "doc_acme_revenue"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_revenue",
+          "filename": "revenue_recognition_asc606.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0032",
+      "query": "For an implementation service bundled with a software subscription, when is that service revenue recognized?",
+      "gt_answer": "When the implementation is delivered, if it is a distinct performance obligation",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0047",
+          "text": "Implementation services bundled with a subscription are distinct if they are not required to use the software.",
+          "doc_id": "doc_acme_revenue"
+        },
+        {
+          "fact_id": "acmf_f0048",
+          "text": "Distinct implementation services are recognised when delivered.",
+          "doc_id": "doc_acme_revenue"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_revenue",
+          "filename": "revenue_recognition_asc606.pdf",
+          "page_numbers": [
+            10,
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0033",
+      "query": "By which working day must all sub-ledger journals be posted for the monthly close?",
+      "gt_answer": "WD-2",
+      "categories": [
+        "temporal",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0049",
+          "text": "All sub-ledger journals must be posted by working day WD-2.",
+          "doc_id": "doc_acme_close"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_close",
+          "filename": "monthly_close_calendar.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0034",
+      "query": "Which team owns the monthly close calendar?",
+      "gt_answer": "The Global Controllership team",
+      "categories": [
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0050",
+          "text": "The Global Controllership team owns the monthly close calendar.",
+          "doc_id": "doc_acme_close"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_close",
+          "filename": "monthly_close_calendar.pdf",
+          "page_numbers": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0035",
+      "query": "What is the deadline for management reporting after quarter end?",
+      "gt_answer": "WD-5 for internal reporting, WD-8 for consolidated group reporting",
+      "categories": [
+        "temporal",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0051",
+          "text": "Internal quarterly management reporting is due on WD-5 after quarter end.",
+          "doc_id": "doc_acme_close"
+        },
+        {
+          "fact_id": "acmf_f0052",
+          "text": "Consolidated group quarterly reporting is due on WD-8 after quarter end.",
+          "doc_id": "doc_acme_close"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_close",
+          "filename": "monthly_close_calendar.pdf",
+          "page_numbers": [
+            8,
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0036",
+      "query": "Are journal entries above USD 500,000 subject to additional review?",
+      "gt_answer": "Yes, they require dual review by the Controller and a delegated approver",
+      "categories": [
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0053",
+          "text": "Journal entries above USD 500,000 require dual review.",
+          "doc_id": "doc_acme_sox"
+        },
+        {
+          "fact_id": "acmf_f0054",
+          "text": "Dual review is performed by the Controller and a delegated approver.",
+          "doc_id": "doc_acme_sox"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_sox",
+          "filename": "sox_controls_matrix.pdf",
+          "page_numbers": [
+            18
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0037",
+      "query": "Which GL account is used to record software subscription revenue?",
+      "gt_answer": "GL 4110 — Subscription Revenue",
+      "categories": [
+        "numerical",
+        "entity-centric",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0055",
+          "text": "GL account 4110 is designated Subscription Revenue.",
+          "doc_id": "doc_acme_coa"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_coa",
+          "filename": "chart_of_accounts_master.xlsx",
+          "page_numbers": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0038",
+      "query": "Which cost centre owns the finance transformation programme?",
+      "gt_answer": "Cost Centre CC-72110",
+      "categories": [
+        "entity-centric",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0056",
+          "text": "Cost centre CC-72110 owns the Finance Transformation programme.",
+          "doc_id": "doc_acme_coa"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_coa",
+          "filename": "chart_of_accounts_master.xlsx",
+          "page_numbers": [
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0039",
+      "query": "What is the CAPEX capitalization threshold for IT hardware?",
+      "gt_answer": "USD 5,000 per item",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0057",
+          "text": "The CAPEX capitalisation threshold for IT hardware is USD 5,000 per item.",
+          "doc_id": "doc_acme_capex"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_capex",
+          "filename": "capex_policy_v3.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0040",
+      "query": "What is the CAPEX capitalization threshold for internal-use software development?",
+      "gt_answer": "USD 50,000 per project",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0058",
+          "text": "Internal-use software development capitalisation begins at USD 50,000 per project.",
+          "doc_id": "doc_acme_capex"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_capex",
+          "filename": "capex_policy_v3.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0041",
+      "query": "Compare the depreciation approach for IT hardware versus office furniture.",
+      "gt_answer": "IT hardware is depreciated over 3 years straight-line; office furniture is depreciated over 7 years straight-line",
+      "categories": [
+        "comparative",
+        "numerical"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0059",
+          "text": "IT hardware is depreciated over 3 years on a straight-line basis.",
+          "doc_id": "doc_acme_capex"
+        },
+        {
+          "fact_id": "acmf_f0060",
+          "text": "Office furniture is depreciated over 7 years on a straight-line basis.",
+          "doc_id": "doc_acme_capex"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_capex",
+          "filename": "capex_policy_v3.pdf",
+          "page_numbers": [
+            9,
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0042",
+      "query": "By when must annual budget submissions be complete?",
+      "gt_answer": "By November 15",
+      "categories": [
+        "temporal",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0061",
+          "text": "Annual budget submissions must be complete by November 15.",
+          "doc_id": "doc_acme_budget"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_budget",
+          "filename": "budget_planning_handbook.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0043",
+      "query": "How many forecast reforecasts are performed per year?",
+      "gt_answer": "Three: after Q1, Q2, and Q3",
+      "categories": [
+        "numerical",
+        "temporal"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0062",
+          "text": "ACME runs three reforecasts per year: after Q1, Q2 and Q3.",
+          "doc_id": "doc_acme_budget"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_budget",
+          "filename": "budget_planning_handbook.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0044",
+      "query": "What variance threshold triggers a mandatory variance explanation to the CFO office?",
+      "gt_answer": "10% or USD 500,000 whichever is lower",
+      "categories": [
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0063",
+          "text": "A budget variance above 10% requires a written explanation to the CFO office.",
+          "doc_id": "doc_acme_opex"
+        },
+        {
+          "fact_id": "acmf_f0064",
+          "text": "A budget variance above USD 500,000 requires a written explanation to the CFO office.",
+          "doc_id": "doc_acme_opex"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_opex",
+          "filename": "opex_management_guide.pdf",
+          "page_numbers": [
+            11,
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0045",
+      "query": "What is the maximum value of a gift an employee may accept without pre-approval?",
+      "gt_answer": "USD 100",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0065",
+          "text": "Employees may accept gifts up to USD 100 in value without pre-approval.",
+          "doc_id": "doc_acme_abac"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_abac",
+          "filename": "anti_bribery_corruption_policy.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0046",
+      "query": "Must gifts to government officials always be pre-approved?",
+      "gt_answer": "Yes, regardless of value",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0066",
+          "text": "Any gift to a government official must be pre-approved regardless of value.",
+          "doc_id": "doc_acme_abac"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_abac",
+          "filename": "anti_bribery_corruption_policy.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0047",
+      "query": "Which register is used to record gifts and hospitality above USD 100?",
+      "gt_answer": "The Gifts and Hospitality Register",
+      "categories": [
+        "entity-centric",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0067",
+          "text": "Gifts and hospitality above USD 100 must be logged in the Gifts and Hospitality Register.",
+          "doc_id": "doc_acme_gifts"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_gifts",
+          "filename": "gifts_hospitality_register.xlsx",
+          "page_numbers": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0048",
+      "query": "How does the FCPA differ from the UK Bribery Act in scope of coverage?",
+      "gt_answer": "The UK Bribery Act criminalises private-sector bribery as well as public-sector; the FCPA covers primarily foreign public officials",
+      "categories": [
+        "comparative",
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0068",
+          "text": "The FCPA primarily addresses bribery of foreign public officials.",
+          "doc_id": "doc_acme_abac"
+        },
+        {
+          "fact_id": "acmf_f0069",
+          "text": "The UK Bribery Act covers both public and private-sector bribery.",
+          "doc_id": "doc_acme_abac"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_abac",
+          "filename": "anti_bribery_corruption_policy.pdf",
+          "page_numbers": [
+            14,
+            15
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0049",
+      "query": "How can employees report a suspected code-of-conduct violation anonymously?",
+      "gt_answer": "Through the Speak-Up helpline operated by an independent third party",
+      "categories": [
+        "entity-centric",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0070",
+          "text": "The Speak-Up helpline allows anonymous reporting of suspected violations.",
+          "doc_id": "doc_acme_whistle"
+        },
+        {
+          "fact_id": "acmf_f0071",
+          "text": "The Speak-Up helpline is operated by an independent third-party provider.",
+          "doc_id": "doc_acme_whistle"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_whistle",
+          "filename": "whistleblowing_policy.pdf",
+          "page_numbers": [
+            3,
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0050",
+      "query": "Are retaliation actions against whistleblowers ever permitted?",
+      "gt_answer": "No, retaliation is strictly prohibited and grounds for termination",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0072",
+          "text": "Retaliation against whistleblowers is strictly prohibited and grounds for termination.",
+          "doc_id": "doc_acme_whistle"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_whistle",
+          "filename": "whistleblowing_policy.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0051",
+      "query": "What is ACME's arm's-length pricing method for intercompany services?",
+      "gt_answer": "The cost-plus method with a 5% markup",
+      "categories": [
+        "numerical",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0073",
+          "text": "Intercompany services are priced using the cost-plus method with a 5% markup.",
+          "doc_id": "doc_acme_tax"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_tax",
+          "filename": "transfer_pricing_policy.pdf",
+          "page_numbers": [
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0052",
+      "query": "For an EU B2B service invoice cross-border, who accounts for VAT?",
+      "gt_answer": "The customer, under the reverse charge mechanism",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0074",
+          "text": "EU cross-border B2B service invoices apply the reverse charge mechanism.",
+          "doc_id": "doc_acme_vat"
+        },
+        {
+          "fact_id": "acmf_f0075",
+          "text": "Under the reverse charge, the customer accounts for VAT.",
+          "doc_id": "doc_acme_vat"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_vat",
+          "filename": "vat_guidance_eu.pdf",
+          "page_numbers": [
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0053",
+      "query": "What is the standard VAT rate applied for supplies within France?",
+      "gt_answer": "20%",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0076",
+          "text": "The standard French VAT rate is 20%.",
+          "doc_id": "doc_acme_vat"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_vat",
+          "filename": "vat_guidance_eu.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0054",
+      "query": "Which document records the transfer-pricing benchmarks used each year?",
+      "gt_answer": "The master file and local file transfer-pricing documentation",
+      "categories": [
+        "entity-centric",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0077",
+          "text": "Transfer-pricing benchmarks are captured in the annual master file.",
+          "doc_id": "doc_acme_tax"
+        },
+        {
+          "fact_id": "acmf_f0078",
+          "text": "Local file documentation captures country-specific transfer-pricing benchmarks.",
+          "doc_id": "doc_acme_tax"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_tax",
+          "filename": "transfer_pricing_policy.pdf",
+          "page_numbers": [
+            16,
+            17
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0055",
+      "query": "When must the local file transfer-pricing documentation be finalized?",
+      "gt_answer": "By the corporate income tax return filing deadline in each jurisdiction",
+      "categories": [
+        "temporal",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0079",
+          "text": "Local file transfer-pricing documentation must be finalised by each jurisdiction's corporate tax return deadline.",
+          "doc_id": "doc_acme_tax"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_tax",
+          "filename": "transfer_pricing_policy.pdf",
+          "page_numbers": [
+            18
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0056",
+      "query": "What is the maximum counterparty exposure allowed to a single non-investment-grade bank?",
+      "gt_answer": "USD 25 million",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0080",
+          "text": "Maximum counterparty exposure to a single non-investment-grade bank is USD 25 million.",
+          "doc_id": "doc_acme_treasury"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_treasury",
+          "filename": "treasury_policy.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0057",
+      "query": "Which currencies is ACME's FX hedging programme authorized to hedge?",
+      "gt_answer": "USD, EUR, GBP, JPY, and CNH",
+      "categories": [
+        "entity-centric",
+        "lookup",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0081",
+          "text": "ACME's FX hedging programme is authorised for USD, EUR, GBP, JPY and CNH.",
+          "doc_id": "doc_acme_treasury"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_treasury",
+          "filename": "treasury_policy.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0058",
+      "query": "What is the standard customer payment term for enterprise contracts?",
+      "gt_answer": "Net 45 days",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0082",
+          "text": "The standard customer payment term for enterprise contracts is Net 45.",
+          "doc_id": "doc_acme_credit"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_credit",
+          "filename": "customer_credit_policy.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0059",
+      "query": "At what days-past-due does an AR balance become subject to Collections escalation?",
+      "gt_answer": "60 days past due",
+      "categories": [
+        "numerical",
+        "temporal"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0083",
+          "text": "AR balances 60 days past due are escalated to Collections.",
+          "doc_id": "doc_acme_ar"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_ar",
+          "filename": "accounts_receivable_sop.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0060",
+      "query": "Under what conditions may an AR balance be written off?",
+      "gt_answer": "After 180 days past due and Collections exhaustion, with Controller approval",
+      "categories": [
+        "multi-hop",
+        "temporal"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0084",
+          "text": "AR write-off is permitted after 180 days past due.",
+          "doc_id": "doc_acme_ar"
+        },
+        {
+          "fact_id": "acmf_f0085",
+          "text": "AR write-off additionally requires Collections activity exhaustion and Controller approval.",
+          "doc_id": "doc_acme_ar"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_ar",
+          "filename": "accounts_receivable_sop.pdf",
+          "page_numbers": [
+            12,
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0061",
+      "query": "How is 3-way match performed in Accounts Payable?",
+      "gt_answer": "By matching the purchase order, goods receipt, and vendor invoice",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0086",
+          "text": "3-way match compares the purchase order, goods receipt, and vendor invoice.",
+          "doc_id": "doc_acme_ap"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_ap",
+          "filename": "accounts_payable_sop.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0062",
+      "query": "What is the tolerance for price variance between PO and invoice in AP?",
+      "gt_answer": "3% or USD 100 whichever is greater",
+      "categories": [
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0087",
+          "text": "AP price variance is tolerated up to 3% between PO and invoice.",
+          "doc_id": "doc_acme_ap"
+        },
+        {
+          "fact_id": "acmf_f0088",
+          "text": "AP price variance is tolerated up to USD 100 between PO and invoice.",
+          "doc_id": "doc_acme_ap"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_ap",
+          "filename": "accounts_payable_sop.pdf",
+          "page_numbers": [
+            7,
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0063",
+      "query": "What is the required customer credit limit review cadence?",
+      "gt_answer": "Every 12 months, or immediately upon a credit downgrade",
+      "categories": [
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0089",
+          "text": "Customer credit limits are reviewed at least every 12 months.",
+          "doc_id": "doc_acme_credit"
+        },
+        {
+          "fact_id": "acmf_f0090",
+          "text": "Customer credit limits are re-reviewed immediately upon a credit downgrade.",
+          "doc_id": "doc_acme_credit"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_credit",
+          "filename": "customer_credit_policy.pdf",
+          "page_numbers": [
+            9,
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0064",
+      "query": "How long must invoices be retained under the records retention schedule?",
+      "gt_answer": "Ten years",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0091",
+          "text": "Invoices must be retained for ten years under the Records Retention Schedule.",
+          "doc_id": "doc_acme_records"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_records",
+          "filename": "records_retention_schedule.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0065",
+      "query": "How long must general ledger data be retained?",
+      "gt_answer": "Fifteen years",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0092",
+          "text": "General ledger data must be retained for fifteen years.",
+          "doc_id": "doc_acme_records"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_records",
+          "filename": "records_retention_schedule.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0066",
+      "query": "Compare the retention periods for HR employment records versus payroll records.",
+      "gt_answer": "HR employment records: seven years after termination; payroll records: ten years",
+      "categories": [
+        "comparative",
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0093",
+          "text": "HR employment records must be retained for seven years after termination.",
+          "doc_id": "doc_acme_records"
+        },
+        {
+          "fact_id": "acmf_f0094",
+          "text": "Payroll records must be retained for ten years.",
+          "doc_id": "doc_acme_records"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_records",
+          "filename": "records_retention_schedule.pdf",
+          "page_numbers": [
+            10,
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0067",
+      "query": "Who does Internal Audit functionally report to?",
+      "gt_answer": "The Audit Committee of the Board",
+      "categories": [
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0095",
+          "text": "Internal Audit reports functionally to the Audit Committee of the Board.",
+          "doc_id": "doc_acme_audit"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_audit",
+          "filename": "internal_audit_charter.pdf",
+          "page_numbers": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0068",
+      "query": "What is the minimum frequency of Internal Audit engagements for material subsidiaries?",
+      "gt_answer": "At least once every three years",
+      "categories": [
+        "temporal",
+        "numerical"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0096",
+          "text": "Material subsidiaries are audited at least once every three years.",
+          "doc_id": "doc_acme_audit"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_audit",
+          "filename": "internal_audit_charter.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0069",
+      "query": "What is ACME's enterprise risk appetite for reputational risk?",
+      "gt_answer": "Low — ACME accepts minimal reputational exposure",
+      "categories": [
+        "definition",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0097",
+          "text": "ACME's risk appetite for reputational risk is stated as low.",
+          "doc_id": "doc_acme_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_risk",
+          "filename": "enterprise_risk_framework.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0070",
+      "query": "Which KRI monitors third-party concentration risk?",
+      "gt_answer": "KRI-14: percentage of spend concentrated in the top-five vendors",
+      "categories": [
+        "numerical",
+        "entity-centric",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0098",
+          "text": "KRI-14 monitors third-party concentration risk.",
+          "doc_id": "doc_acme_kri"
+        },
+        {
+          "fact_id": "acmf_f0099",
+          "text": "KRI-14 is defined as the percentage of spend concentrated in the top-five vendors.",
+          "doc_id": "doc_acme_kri"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_kri",
+          "filename": "kri_thresholds_2025.xlsx",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0071",
+      "query": "What is the KRI-14 amber threshold?",
+      "gt_answer": "40%",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0100",
+          "text": "KRI-14 breaches amber at 40% spend concentration in top-five vendors.",
+          "doc_id": "doc_acme_kri"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_kri",
+          "filename": "kri_thresholds_2025.xlsx",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0072",
+      "query": "What is the KRI-14 red threshold?",
+      "gt_answer": "55%",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0101",
+          "text": "KRI-14 breaches red at 55% spend concentration in top-five vendors.",
+          "doc_id": "doc_acme_kri"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_kri",
+          "filename": "kri_thresholds_2025.xlsx",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0073",
+      "query": "What is the retention period for job-applicant data of unsuccessful candidates?",
+      "gt_answer": "12 months, unless the candidate consents to longer retention",
+      "categories": [
+        "temporal",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0102",
+          "text": "Unsuccessful job-applicant data is retained for 12 months by default.",
+          "doc_id": "doc_acme_privacy"
+        },
+        {
+          "fact_id": "acmf_f0103",
+          "text": "Retention beyond 12 months requires the candidate's explicit consent.",
+          "doc_id": "doc_acme_privacy"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_privacy",
+          "filename": "data_privacy_notice_employees.pdf",
+          "page_numbers": [
+            7,
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0074",
+      "query": "Who is ACME's Data Protection Officer?",
+      "gt_answer": "The Group Data Protection Officer based in Ireland",
+      "categories": [
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0104",
+          "text": "The Group Data Protection Officer is based in Ireland.",
+          "doc_id": "doc_acme_privacy"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_privacy",
+          "filename": "data_privacy_notice_employees.pdf",
+          "page_numbers": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0075",
+      "query": "What is the maximum response time to a subject-access request under GDPR?",
+      "gt_answer": "One month from receipt, extendable by two further months for complex requests",
+      "categories": [
+        "temporal",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0105",
+          "text": "GDPR subject access requests must be answered within one month of receipt.",
+          "doc_id": "doc_acme_privacy"
+        },
+        {
+          "fact_id": "acmf_f0106",
+          "text": "Complex GDPR subject access requests can be extended by up to two additional months.",
+          "doc_id": "doc_acme_privacy"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_privacy",
+          "filename": "data_privacy_notice_employees.pdf",
+          "page_numbers": [
+            11,
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0076",
+      "query": "When does a vendor engagement require both a competitive tender AND a Tier 1 risk assessment?",
+      "gt_answer": "When the contract value exceeds USD 100,000 and the vendor supplies a critical service",
+      "categories": [
+        "multi-hop",
+        "comparative",
+        "numerical"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0107",
+          "text": "Contracts above USD 100,000 require a competitive tender.",
+          "doc_id": "doc_acme_procurement"
+        },
+        {
+          "fact_id": "acmf_f0108",
+          "text": "Tier 1 (critical) vendor status requires a Tier 1 risk assessment.",
+          "doc_id": "doc_acme_vendor_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            8
+          ]
+        },
+        {
+          "doc_id": "doc_acme_vendor_risk",
+          "filename": "vendor_risk_framework.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0077",
+      "query": "How does the approval path for a USD 300,000 IT services contract differ from a USD 300,000 marketing services contract?",
+      "gt_answer": "IT services additionally requires a CISO information-security sign-off",
+      "categories": [
+        "comparative",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0109",
+          "text": "IT services contracts above USD 100,000 require information-security sign-off.",
+          "doc_id": "doc_acme_procurement"
+        },
+        {
+          "fact_id": "acmf_f0110",
+          "text": "Both IT and marketing services contracts of USD 300,000 require BU VP and Group Financial Controller approval.",
+          "doc_id": "doc_acme_delegations"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            14
+          ]
+        },
+        {
+          "doc_id": "doc_acme_delegations",
+          "filename": "delegation_of_authority_v4.pdf",
+          "page_numbers": [
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0078",
+      "query": "Which policies together govern approval of a USD 750,000 CAPEX purchase from a Tier 1 vendor?",
+      "gt_answer": "Delegation of Authority Matrix, CAPEX Policy, and Third-Party Risk Framework",
+      "categories": [
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0111",
+          "text": "CAPEX purchases above USD 250,000 require Delegation of Authority approval.",
+          "doc_id": "doc_acme_delegations"
+        },
+        {
+          "fact_id": "acmf_f0112",
+          "text": "CAPEX Policy governs justification and business-case documentation.",
+          "doc_id": "doc_acme_capex"
+        },
+        {
+          "fact_id": "acmf_f0113",
+          "text": "Tier 1 vendor engagements require Third-Party Risk Framework due diligence.",
+          "doc_id": "doc_acme_vendor_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_delegations",
+          "filename": "delegation_of_authority_v4.pdf",
+          "page_numbers": [
+            4
+          ]
+        },
+        {
+          "doc_id": "doc_acme_capex",
+          "filename": "capex_policy_v3.pdf",
+          "page_numbers": [
+            3
+          ]
+        },
+        {
+          "doc_id": "doc_acme_vendor_risk",
+          "filename": "vendor_risk_framework.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0079",
+      "query": "If a vendor is flagged for a sanctions hit AND has a PEP-linked beneficial owner, what is the required escalation?",
+      "gt_answer": "Payments are frozen and the case is escalated to the Chief Compliance Officer; onboarding is halted pending resolution",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0114",
+          "text": "Confirmed sanctions hits require immediate payment freeze and escalation to the Chief Compliance Officer.",
+          "doc_id": "doc_acme_sanctions"
+        },
+        {
+          "fact_id": "acmf_f0115",
+          "text": "PEP-linked vendor engagements require sign-off from the Chief Compliance Officer.",
+          "doc_id": "doc_acme_aml"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_sanctions",
+          "filename": "sanctions_screening_policy.pdf",
+          "page_numbers": [
+            8
+          ]
+        },
+        {
+          "doc_id": "doc_acme_aml",
+          "filename": "aml_policy.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0080",
+      "query": "How does the record retention period for procurement bid records compare to VAT invoice records?",
+      "gt_answer": "Procurement bid records: seven years; VAT invoice records: ten years",
+      "categories": [
+        "comparative",
+        "temporal"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0116",
+          "text": "Procurement bid records must be retained for seven years.",
+          "doc_id": "doc_acme_procurement"
+        },
+        {
+          "fact_id": "acmf_f0117",
+          "text": "Invoices, including VAT invoices, must be retained for ten years.",
+          "doc_id": "doc_acme_records"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            22
+          ]
+        },
+        {
+          "doc_id": "doc_acme_records",
+          "filename": "records_retention_schedule.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0081",
+      "query": "A single vendor represents 42% of category spend. What KRI-driven action is required?",
+      "gt_answer": "Trigger KRI-14 amber escalation to Enterprise Risk Committee and prepare a concentration-mitigation plan",
+      "categories": [
+        "numerical",
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0118",
+          "text": "KRI-14 breaches amber at 40% top-vendor concentration.",
+          "doc_id": "doc_acme_kri"
+        },
+        {
+          "fact_id": "acmf_f0119",
+          "text": "KRI amber breaches are escalated to the Enterprise Risk Committee.",
+          "doc_id": "doc_acme_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_kri",
+          "filename": "kri_thresholds_2025.xlsx",
+          "page_numbers": [
+            3
+          ]
+        },
+        {
+          "doc_id": "doc_acme_risk",
+          "filename": "enterprise_risk_framework.pdf",
+          "page_numbers": [
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0082",
+      "query": "Under what conditions may an employee accept a USD 250 gift?",
+      "gt_answer": "Only with prior approval by the line manager and the Compliance team",
+      "categories": [
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0120",
+          "text": "Gifts above USD 100 require pre-approval.",
+          "doc_id": "doc_acme_abac"
+        },
+        {
+          "fact_id": "acmf_f0121",
+          "text": "Pre-approval must be given by the employee's line manager and Compliance.",
+          "doc_id": "doc_acme_abac"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_abac",
+          "filename": "anti_bribery_corruption_policy.pdf",
+          "page_numbers": [
+            6,
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0083",
+      "query": "What supporting documentation is needed to justify a single-source procurement of USD 200,000?",
+      "gt_answer": "A written justification memo signed by the CPO and a market-scan summary",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0122",
+          "text": "Single-source procurement above USD 50,000 requires a justification memo.",
+          "doc_id": "doc_acme_procurement"
+        },
+        {
+          "fact_id": "acmf_f0123",
+          "text": "Single-source procurement requires a market-scan summary in the justification memo.",
+          "doc_id": "doc_acme_procurement"
+        },
+        {
+          "fact_id": "acmf_f0124",
+          "text": "Single-source justification above USD 50,000 must be signed by the Chief Procurement Officer.",
+          "doc_id": "doc_acme_procurement"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            12,
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0084",
+      "query": "How many workdays does the Global Close team have to publish the group consolidation deck after quarter end?",
+      "gt_answer": "Ten working days",
+      "categories": [
+        "temporal",
+        "numerical",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0125",
+          "text": "The group consolidation deck is published within ten working days of quarter end.",
+          "doc_id": "doc_acme_close"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_close",
+          "filename": "monthly_close_calendar.pdf",
+          "page_numbers": [
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0085",
+      "query": "What controls mitigate segregation-of-duties risk in the Procure-to-Pay cycle?",
+      "gt_answer": "Separation of vendor master maintenance, purchase order approval, goods receipt, and payment run",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0126",
+          "text": "Vendor master maintenance is segregated from PO approval in the Procure-to-Pay cycle.",
+          "doc_id": "doc_acme_sox"
+        },
+        {
+          "fact_id": "acmf_f0127",
+          "text": "Goods receipt is segregated from payment run in the Procure-to-Pay cycle.",
+          "doc_id": "doc_acme_sox"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_sox",
+          "filename": "sox_controls_matrix.pdf",
+          "page_numbers": [
+            21,
+            22
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0086",
+      "query": "Are contractor engagements subject to the Delegation of Authority Matrix?",
+      "gt_answer": "Yes, when total contract value exceeds USD 50,000",
+      "categories": [
+        "definition",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0128",
+          "text": "Contractor engagements above USD 50,000 are subject to the Delegation of Authority Matrix.",
+          "doc_id": "doc_acme_delegations"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_delegations",
+          "filename": "delegation_of_authority_v4.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0087",
+      "query": "For a customer with a credit downgrade to sub-investment grade, what happens to their credit limit?",
+      "gt_answer": "It is immediately reviewed and reduced by at least 25% or brought to zero pending sign-off",
+      "categories": [
+        "multi-hop",
+        "numerical"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0129",
+          "text": "Customer credit limits are re-reviewed immediately upon a credit downgrade.",
+          "doc_id": "doc_acme_credit"
+        },
+        {
+          "fact_id": "acmf_f0130",
+          "text": "Sub-investment-grade downgrade triggers a minimum 25% credit limit reduction or zeroing.",
+          "doc_id": "doc_acme_credit"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_credit",
+          "filename": "customer_credit_policy.pdf",
+          "page_numbers": [
+            10,
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0088",
+      "query": "How often are SOX key control test results reported to the Audit Committee?",
+      "gt_answer": "Quarterly",
+      "categories": [
+        "temporal",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0131",
+          "text": "SOX key control test results are reported to the Audit Committee quarterly.",
+          "doc_id": "doc_acme_audit"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_audit",
+          "filename": "internal_audit_charter.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0089",
+      "query": "When must a vendor exit plan be tested for a Tier 1 vendor?",
+      "gt_answer": "At least annually",
+      "categories": [
+        "temporal",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0132",
+          "text": "Tier 1 vendor exit plans must be tested at least annually.",
+          "doc_id": "doc_acme_vendor_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_vendor_risk",
+          "filename": "vendor_risk_framework.pdf",
+          "page_numbers": [
+            19
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0090",
+      "query": "What is the maximum notional value allowed for a single FX hedge?",
+      "gt_answer": "USD 100 million",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0133",
+          "text": "Single FX hedge notional is capped at USD 100 million.",
+          "doc_id": "doc_acme_treasury"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_treasury",
+          "filename": "treasury_policy.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0091",
+      "query": "Compare the approval requirement for hedging a forecasted transaction versus a firm commitment.",
+      "gt_answer": "Both require Treasury approval; forecasted-transaction hedges additionally require CFO sign-off",
+      "categories": [
+        "comparative",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0134",
+          "text": "Firm commitment hedges require Treasury approval.",
+          "doc_id": "doc_acme_treasury"
+        },
+        {
+          "fact_id": "acmf_f0135",
+          "text": "Forecasted-transaction hedges require Treasury approval and additional CFO sign-off.",
+          "doc_id": "doc_acme_treasury"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_treasury",
+          "filename": "treasury_policy.pdf",
+          "page_numbers": [
+            9,
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0092",
+      "query": "What is the tolerance for goods-receipt quantity variance in Accounts Payable?",
+      "gt_answer": "2% or 5 units whichever is greater",
+      "categories": [
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0136",
+          "text": "AP goods-receipt quantity variance is tolerated up to 2%.",
+          "doc_id": "doc_acme_ap"
+        },
+        {
+          "fact_id": "acmf_f0137",
+          "text": "AP goods-receipt quantity variance is tolerated up to 5 units.",
+          "doc_id": "doc_acme_ap"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_ap",
+          "filename": "accounts_payable_sop.pdf",
+          "page_numbers": [
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0093",
+      "query": "Are ACME internal audits allowed to outsource specialist work?",
+      "gt_answer": "Yes, subject to Audit Committee approval and independence checks",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0138",
+          "text": "Internal Audit may outsource specialist engagements with Audit Committee approval.",
+          "doc_id": "doc_acme_audit"
+        },
+        {
+          "fact_id": "acmf_f0139",
+          "text": "Outsourced Internal Audit engagements require independence checks.",
+          "doc_id": "doc_acme_audit"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_audit",
+          "filename": "internal_audit_charter.pdf",
+          "page_numbers": [
+            14,
+            15
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0094",
+      "query": "Which entity approves a change to the ACME risk appetite statement?",
+      "gt_answer": "The Board of Directors",
+      "categories": [
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0140",
+          "text": "Changes to the ACME risk appetite statement require Board of Directors approval.",
+          "doc_id": "doc_acme_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_risk",
+          "filename": "enterprise_risk_framework.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0095",
+      "query": "For an EU-to-non-EU intra-group service invoice, which two policies interact?",
+      "gt_answer": "The Transfer Pricing Policy and the VAT Guidance for EU cross-border services",
+      "categories": [
+        "comparative",
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0141",
+          "text": "Intra-group EU-to-non-EU service invoices are priced under the Transfer Pricing Policy.",
+          "doc_id": "doc_acme_tax"
+        },
+        {
+          "fact_id": "acmf_f0142",
+          "text": "EU cross-border service invoices are governed by the EU VAT Guidance.",
+          "doc_id": "doc_acme_vat"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_tax",
+          "filename": "transfer_pricing_policy.pdf",
+          "page_numbers": [
+            12
+          ]
+        },
+        {
+          "doc_id": "doc_acme_vat",
+          "filename": "vat_guidance_eu.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0096",
+      "query": "What is the minimum bid-record retention period?",
+      "gt_answer": "Seven years",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0143",
+          "text": "Procurement bid records must be retained for a minimum of seven years.",
+          "doc_id": "doc_acme_procurement"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_procurement",
+          "filename": "procurement_policy_2025.pdf",
+          "page_numbers": [
+            22
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0097",
+      "query": "What is ACME's official position on cryptocurrency payroll payments?",
+      "gt_answer": "Not addressed in current ACME policies",
+      "categories": [
+        "single-hop",
+        "lookup"
+      ],
+      "difficulty": "hard",
+      "eval_label": "unanswerable",
+      "gt_supporting_facts": [],
+      "gt_documents": [],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0098",
+      "query": "What is ACME's target carbon-neutrality year?",
+      "gt_answer": "Not addressed in current ACME finance and compliance policies",
+      "categories": [
+        "single-hop",
+        "temporal"
+      ],
+      "difficulty": "hard",
+      "eval_label": "unanswerable",
+      "gt_supporting_facts": [],
+      "gt_documents": [],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0099",
+      "query": "What is the deadline for finalizing prior-year comparatives in the annual report?",
+      "gt_answer": "By WD-15 of January",
+      "categories": [
+        "temporal",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0144",
+          "text": "Prior-year comparatives must be finalised by WD-15 of January.",
+          "doc_id": "doc_acme_close"
+        },
+        {
+          "fact_id": "acmf_f0145",
+          "text": "Annual report finalisation depends on prior-year comparatives being closed.",
+          "doc_id": "doc_acme_close"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_close",
+          "filename": "monthly_close_calendar.pdf",
+          "page_numbers": [
+            16
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "acmf_q0100",
+      "query": "Which committee reviews KRI red breaches?",
+      "gt_answer": "The Enterprise Risk Committee",
+      "categories": [
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "acmf_f0146",
+          "text": "The Enterprise Risk Committee reviews all KRI red breaches.",
+          "doc_id": "doc_acme_risk"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_acme_risk",
+          "filename": "enterprise_risk_framework.pdf",
+          "page_numbers": [
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    }
+  ]
+}

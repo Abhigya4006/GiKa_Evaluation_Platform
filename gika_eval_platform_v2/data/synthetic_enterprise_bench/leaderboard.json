@@ -1,0 +1,45 @@
+{
+  "dataset_id": "acme_finops_bench",
+  "entries": [
+    {
+      "system_name": "BaselineRAG",
+      "metric": "f1",
+      "value": 0.68
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "exact_match",
+      "value": 0.51
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "recall",
+      "value": 0.72
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "document_recall",
+      "value": 0.65
+    },
+    {
+      "system_name": "EnterpriseRAG",
+      "metric": "f1",
+      "value": 0.77
+    },
+    {
+      "system_name": "EnterpriseRAG",
+      "metric": "exact_match",
+      "value": 0.62
+    },
+    {
+      "system_name": "EnterpriseRAG",
+      "metric": "recall",
+      "value": 0.81
+    },
+    {
+      "system_name": "EnterpriseRAG",
+      "metric": "document_recall",
+      "value": 0.74
+    }
+  ]
+}

@@ -1,0 +1,3425 @@
+{
+  "dataset_id": "novacorp_hr_bench",
+  "name": "NovaCorp HR & People-Ops Benchmark",
+  "version": "1.0.0",
+  "domain": "enterprise_hr_knowledge_base",
+  "source": "synthetic",
+  "metric_config": {
+    "recall_at_k": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "em_normalize": true
+  },
+  "leaderboard": [
+    {
+      "system_name": "BaselineRAG",
+      "metric": "f1",
+      "value": 0.66
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "exact_match",
+      "value": 0.48
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "recall",
+      "value": 0.7
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "document_recall",
+      "value": 0.64
+    },
+    {
+      "system_name": "HR-RAG-v1",
+      "metric": "f1",
+      "value": 0.74
+    },
+    {
+      "system_name": "HR-RAG-v1",
+      "metric": "exact_match",
+      "value": 0.58
+    },
+    {
+      "system_name": "HR-RAG-v1",
+      "metric": "recall",
+      "value": 0.78
+    },
+    {
+      "system_name": "HR-RAG-v1",
+      "metric": "document_recall",
+      "value": 0.72
+    }
+  ],
+  "items": [
+    {
+      "query_id": "nvhr_q0001",
+      "query": "How many days of paid vacation do US full-time employees accrue per year?",
+      "gt_answer": "20 days per year",
+      "categories": [
+        "numerical",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0001",
+          "text": "US full-time employees accrue 20 vacation days per year.",
+          "doc_id": "doc_nova_pto"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pto",
+          "filename": "pto_policy_global.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0002",
+      "query": "What is the annual vacation entitlement for full-time employees in Germany?",
+      "gt_answer": "30 days per year",
+      "categories": [
+        "numerical",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0002",
+          "text": "Full-time employees in Germany receive 30 paid vacation days per year.",
+          "doc_id": "doc_nova_pto"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pto",
+          "filename": "pto_policy_global.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0003",
+      "query": "Compare the paid vacation entitlement between US and Germany full-time employees.",
+      "gt_answer": "US: 20 days; Germany: 30 days",
+      "categories": [
+        "comparative",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0003",
+          "text": "US full-time employees accrue 20 vacation days per year.",
+          "doc_id": "doc_nova_pto"
+        },
+        {
+          "fact_id": "nvhr_f0004",
+          "text": "Full-time employees in Germany receive 30 paid vacation days per year.",
+          "doc_id": "doc_nova_pto"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pto",
+          "filename": "pto_policy_global.pdf",
+          "page_numbers": [
+            4,
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0004",
+      "query": "How many days of primary-caregiver parental leave does NovaCorp provide globally?",
+      "gt_answer": "16 weeks of paid leave",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0005",
+          "text": "NovaCorp provides 16 weeks of paid parental leave to primary caregivers globally.",
+          "doc_id": "doc_nova_parental"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_parental",
+          "filename": "parental_leave_policy.pdf",
+          "page_numbers": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0005",
+      "query": "How many weeks of secondary-caregiver parental leave are provided?",
+      "gt_answer": "6 weeks of paid leave",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0006",
+          "text": "Secondary caregivers receive 6 weeks of paid parental leave.",
+          "doc_id": "doc_nova_parental"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_parental",
+          "filename": "parental_leave_policy.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0006",
+      "query": "Within how many months of a child's birth or adoption must parental leave be taken?",
+      "gt_answer": "Within 12 months",
+      "categories": [
+        "temporal",
+        "numerical",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0007",
+          "text": "Parental leave must be taken within 12 months of the child's birth or adoption.",
+          "doc_id": "doc_nova_parental"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_parental",
+          "filename": "parental_leave_policy.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0007",
+      "query": "Is unused paid vacation carried over to the next year?",
+      "gt_answer": "Up to 5 days may be carried over, expiring by March 31",
+      "categories": [
+        "temporal",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0008",
+          "text": "Up to 5 unused vacation days may be carried over into the next year.",
+          "doc_id": "doc_nova_pto"
+        },
+        {
+          "fact_id": "nvhr_f0009",
+          "text": "Carried-over vacation days expire on March 31 of the following year.",
+          "doc_id": "doc_nova_pto"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pto",
+          "filename": "pto_policy_global.pdf",
+          "page_numbers": [
+            8,
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0008",
+      "query": "How many sick days per year do US full-time employees receive?",
+      "gt_answer": "10 paid sick days",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0010",
+          "text": "US full-time employees receive 10 paid sick days per year.",
+          "doc_id": "doc_nova_pto"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pto",
+          "filename": "pto_policy_global.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0009",
+      "query": "Can sick days be used to care for a family member?",
+      "gt_answer": "Yes, up to 5 sick days per year may be used for family care",
+      "categories": [
+        "numerical",
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0011",
+          "text": "Sick days may be used to care for immediate family members.",
+          "doc_id": "doc_nova_pto"
+        },
+        {
+          "fact_id": "nvhr_f0012",
+          "text": "Up to 5 sick days per year may be used for family care.",
+          "doc_id": "doc_nova_pto"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pto",
+          "filename": "pto_policy_global.pdf",
+          "page_numbers": [
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0010",
+      "query": "How many days of bereavement leave are provided for the death of an immediate family member?",
+      "gt_answer": "5 paid days",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0013",
+          "text": "Employees receive 5 paid bereavement days for the death of an immediate family member.",
+          "doc_id": "doc_nova_leave"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_leave",
+          "filename": "leave_types_matrix.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0011",
+      "query": "Who is considered an 'immediate family member' for bereavement leave purposes?",
+      "gt_answer": "Spouse, domestic partner, parent, child, sibling, or in-law equivalents",
+      "categories": [
+        "definition",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0014",
+          "text": "Immediate family for bereavement includes spouse, domestic partner, parent, child, and sibling.",
+          "doc_id": "doc_nova_leave"
+        },
+        {
+          "fact_id": "nvhr_f0015",
+          "text": "In-law equivalents are treated as immediate family for bereavement leave.",
+          "doc_id": "doc_nova_leave"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_leave",
+          "filename": "leave_types_matrix.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0012",
+      "query": "Does NovaCorp offer a sabbatical program?",
+      "gt_answer": "Yes, one paid month after every five years of continuous service",
+      "categories": [
+        "definition",
+        "temporal",
+        "numerical"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0016",
+          "text": "Employees are eligible for a one-month paid sabbatical after every 5 years of continuous service.",
+          "doc_id": "doc_nova_leave"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_leave",
+          "filename": "leave_types_matrix.pdf",
+          "page_numbers": [
+            15
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0013",
+      "query": "How is jury duty leave compensated?",
+      "gt_answer": "Employees receive full pay for the duration of jury duty",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0017",
+          "text": "NovaCorp pays employees at full salary during jury duty.",
+          "doc_id": "doc_nova_leave"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_leave",
+          "filename": "leave_types_matrix.pdf",
+          "page_numbers": [
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0014",
+      "query": "What is the NovaCorp 401(k) match for US employees?",
+      "gt_answer": "100% match on the first 6% of eligible pay",
+      "categories": [
+        "numerical",
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0018",
+          "text": "NovaCorp matches 100% of the first 6% of eligible pay in the US 401(k) plan.",
+          "doc_id": "doc_nova_benefits_us"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_us",
+          "filename": "benefits_guide_us_2025.pdf",
+          "page_numbers": [
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0015",
+      "query": "When do 401(k) employer matching contributions vest?",
+      "gt_answer": "Immediately",
+      "categories": [
+        "temporal",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0019",
+          "text": "US 401(k) employer matching contributions vest immediately.",
+          "doc_id": "doc_nova_benefits_us"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_us",
+          "filename": "benefits_guide_us_2025.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0016",
+      "query": "What is the annual HSA contribution NovaCorp provides for US employees on the HDHP plan?",
+      "gt_answer": "USD 1,200 for individual coverage, USD 2,400 for family coverage",
+      "categories": [
+        "numerical",
+        "multi-hop",
+        "comparative"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0020",
+          "text": "NovaCorp contributes USD 1,200 annually to individual HSAs for HDHP enrollees.",
+          "doc_id": "doc_nova_benefits_us"
+        },
+        {
+          "fact_id": "nvhr_f0021",
+          "text": "NovaCorp contributes USD 2,400 annually to family HSAs for HDHP enrollees.",
+          "doc_id": "doc_nova_benefits_us"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_us",
+          "filename": "benefits_guide_us_2025.pdf",
+          "page_numbers": [
+            10,
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0017",
+      "query": "Which UK pension contribution rate does NovaCorp offer above the statutory minimum?",
+      "gt_answer": "8% employer contribution matched to 5% employee",
+      "categories": [
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0022",
+          "text": "UK employees receive an 8% NovaCorp pension contribution.",
+          "doc_id": "doc_nova_benefits_eu"
+        },
+        {
+          "fact_id": "nvhr_f0023",
+          "text": "The 8% UK employer pension contribution is matched by a 5% employee contribution.",
+          "doc_id": "doc_nova_benefits_eu"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_eu",
+          "filename": "benefits_guide_eu_2025.pdf",
+          "page_numbers": [
+            7,
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0018",
+      "query": "What medical insurance does NovaCorp provide in India?",
+      "gt_answer": "Group Mediclaim covering employee, spouse, and up to two children",
+      "categories": [
+        "definition",
+        "entity-centric",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0024",
+          "text": "Indian employees receive a Group Mediclaim policy.",
+          "doc_id": "doc_nova_benefits_in"
+        },
+        {
+          "fact_id": "nvhr_f0025",
+          "text": "The Indian Mediclaim covers the employee, spouse, and up to two children.",
+          "doc_id": "doc_nova_benefits_in"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_in",
+          "filename": "benefits_guide_india_2025.pdf",
+          "page_numbers": [
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0019",
+      "query": "What is the EPF employer contribution rate in India?",
+      "gt_answer": "12% of basic salary",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0026",
+          "text": "NovaCorp contributes 12% of basic salary to the Indian EPF.",
+          "doc_id": "doc_nova_benefits_in"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_in",
+          "filename": "benefits_guide_india_2025.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0020",
+      "query": "How is gratuity calculated for Indian employees?",
+      "gt_answer": "15 days of last-drawn basic salary per completed year of service, after 5 years",
+      "categories": [
+        "numerical",
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0027",
+          "text": "Indian gratuity is 15 days of last-drawn basic salary per completed year of service.",
+          "doc_id": "doc_nova_benefits_in"
+        },
+        {
+          "fact_id": "nvhr_f0028",
+          "text": "Gratuity in India is payable after 5 years of continuous service.",
+          "doc_id": "doc_nova_benefits_in"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_in",
+          "filename": "benefits_guide_india_2025.pdf",
+          "page_numbers": [
+            10,
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0021",
+      "query": "Compare NovaCorp's 401(k) match (US) with the UK pension employer contribution.",
+      "gt_answer": "US: 100% match on first 6% of pay; UK: 8% employer contribution matched to 5% employee",
+      "categories": [
+        "comparative",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0029",
+          "text": "NovaCorp matches 100% of the first 6% of eligible pay in the US 401(k) plan.",
+          "doc_id": "doc_nova_benefits_us"
+        },
+        {
+          "fact_id": "nvhr_f0030",
+          "text": "UK employees receive an 8% NovaCorp pension contribution.",
+          "doc_id": "doc_nova_benefits_eu"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_us",
+          "filename": "benefits_guide_us_2025.pdf",
+          "page_numbers": [
+            5
+          ]
+        },
+        {
+          "doc_id": "doc_nova_benefits_eu",
+          "filename": "benefits_guide_eu_2025.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0022",
+      "query": "Does NovaCorp provide dental coverage in the US?",
+      "gt_answer": "Yes, PPO dental with 100% preventive coverage",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0031",
+          "text": "US employees receive PPO dental with 100% preventive coverage.",
+          "doc_id": "doc_nova_benefits_us"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_us",
+          "filename": "benefits_guide_us_2025.pdf",
+          "page_numbers": [
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0023",
+      "query": "What is the annual vision benefit maximum for US employees?",
+      "gt_answer": "USD 300 per year",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0032",
+          "text": "US vision benefit maximum is USD 300 per year.",
+          "doc_id": "doc_nova_benefits_us"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_us",
+          "filename": "benefits_guide_us_2025.pdf",
+          "page_numbers": [
+            14
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0024",
+      "query": "How much statutory maternity leave applies in the UK, and does NovaCorp top it up?",
+      "gt_answer": "52 weeks statutory; NovaCorp tops up to full pay for the first 26 weeks",
+      "categories": [
+        "numerical",
+        "multi-hop",
+        "comparative"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0033",
+          "text": "UK statutory maternity leave is 52 weeks.",
+          "doc_id": "doc_nova_benefits_eu"
+        },
+        {
+          "fact_id": "nvhr_f0034",
+          "text": "NovaCorp UK tops up maternity pay to full salary for the first 26 weeks.",
+          "doc_id": "doc_nova_benefits_eu"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_eu",
+          "filename": "benefits_guide_eu_2025.pdf",
+          "page_numbers": [
+            11,
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0025",
+      "query": "How many days per week must hybrid employees be in the office?",
+      "gt_answer": "At least 3 days per week",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0035",
+          "text": "Hybrid employees must be in-office at least 3 days per week.",
+          "doc_id": "doc_nova_hybrid"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_hybrid",
+          "filename": "hybrid_work_guidelines.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0026",
+      "query": "Which core in-office days apply under the hybrid policy?",
+      "gt_answer": "Tuesday and Wednesday are mandatory in-office days",
+      "categories": [
+        "temporal",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0036",
+          "text": "Tuesday and Wednesday are mandatory core in-office days under the hybrid policy.",
+          "doc_id": "doc_nova_hybrid"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_hybrid",
+          "filename": "hybrid_work_guidelines.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0027",
+      "query": "What is the one-time home-office equipment stipend for new remote employees?",
+      "gt_answer": "USD 750",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0037",
+          "text": "New remote employees receive a one-time home-office stipend of USD 750.",
+          "doc_id": "doc_nova_remote"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_remote",
+          "filename": "remote_work_policy.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0028",
+      "query": "What is the monthly internet reimbursement for full-time remote workers?",
+      "gt_answer": "USD 60 per month",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0038",
+          "text": "Full-time remote workers receive USD 60 monthly internet reimbursement.",
+          "doc_id": "doc_nova_remote"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_remote",
+          "filename": "remote_work_policy.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0029",
+      "query": "Can hybrid employees claim the internet reimbursement?",
+      "gt_answer": "No, hybrid employees are not eligible for the monthly internet reimbursement",
+      "categories": [
+        "comparative",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0039",
+          "text": "The monthly internet reimbursement is limited to full-time remote workers.",
+          "doc_id": "doc_nova_remote"
+        },
+        {
+          "fact_id": "nvhr_f0040",
+          "text": "Hybrid employees are not eligible for the monthly internet reimbursement.",
+          "doc_id": "doc_nova_remote"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_remote",
+          "filename": "remote_work_policy.pdf",
+          "page_numbers": [
+            8,
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0030",
+      "query": "May remote employees work from a country different from their employment jurisdiction?",
+      "gt_answer": "Only for up to 30 days per year with HR and Tax approval",
+      "categories": [
+        "numerical",
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0041",
+          "text": "Remote work from a different country is capped at 30 days per year.",
+          "doc_id": "doc_nova_remote"
+        },
+        {
+          "fact_id": "nvhr_f0042",
+          "text": "Work from a different country requires both HR and Tax approval.",
+          "doc_id": "doc_nova_remote"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_remote",
+          "filename": "remote_work_policy.pdf",
+          "page_numbers": [
+            12,
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0031",
+      "query": "Who owns the Remote Work Policy?",
+      "gt_answer": "The Chief People Officer",
+      "categories": [
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0043",
+          "text": "The Remote Work Policy is owned by the Chief People Officer.",
+          "doc_id": "doc_nova_remote"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_remote",
+          "filename": "remote_work_policy.pdf",
+          "page_numbers": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0032",
+      "query": "What is the standard target annual bonus for a Senior Engineer at NovaCorp?",
+      "gt_answer": "15% of annual base salary",
+      "categories": [
+        "numerical",
+        "entity-centric",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0044",
+          "text": "The target annual bonus for Senior Engineers is 15% of base salary.",
+          "doc_id": "doc_nova_bonus"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_bonus",
+          "filename": "annual_bonus_plan.pdf",
+          "page_numbers": [
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0033",
+      "query": "How are annual bonuses weighted between company and individual performance?",
+      "gt_answer": "70% company performance, 30% individual performance",
+      "categories": [
+        "numerical",
+        "comparative"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0045",
+          "text": "Annual bonuses are weighted 70% on company performance.",
+          "doc_id": "doc_nova_bonus"
+        },
+        {
+          "fact_id": "nvhr_f0046",
+          "text": "Annual bonuses are weighted 30% on individual performance.",
+          "doc_id": "doc_nova_bonus"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_bonus",
+          "filename": "annual_bonus_plan.pdf",
+          "page_numbers": [
+            7,
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0034",
+      "query": "When are annual bonuses paid?",
+      "gt_answer": "In March following the performance year",
+      "categories": [
+        "temporal",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0047",
+          "text": "Annual bonuses are paid in March following the performance year.",
+          "doc_id": "doc_nova_bonus"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_bonus",
+          "filename": "annual_bonus_plan.pdf",
+          "page_numbers": [
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0035",
+      "query": "What is the RSU vesting schedule for new-hire grants?",
+      "gt_answer": "25% after one year, then quarterly over the following three years",
+      "categories": [
+        "temporal",
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0048",
+          "text": "New-hire RSU grants vest 25% after one year (cliff).",
+          "doc_id": "doc_nova_equity"
+        },
+        {
+          "fact_id": "nvhr_f0049",
+          "text": "After the one-year cliff, new-hire RSUs vest quarterly over three more years.",
+          "doc_id": "doc_nova_equity"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_equity",
+          "filename": "equity_plan_rsus.pdf",
+          "page_numbers": [
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0036",
+      "query": "What happens to unvested RSUs upon voluntary resignation?",
+      "gt_answer": "They are forfeited on the last day of employment",
+      "categories": [
+        "definition",
+        "temporal"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0050",
+          "text": "Unvested RSUs are forfeited on the last day of employment upon voluntary resignation.",
+          "doc_id": "doc_nova_equity"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_equity",
+          "filename": "equity_plan_rsus.pdf",
+          "page_numbers": [
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0037",
+      "query": "Are refresh RSU grants automatic or performance-based?",
+      "gt_answer": "Performance-based, granted during annual compensation review",
+      "categories": [
+        "definition",
+        "temporal"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0051",
+          "text": "Refresh RSU grants are performance-based.",
+          "doc_id": "doc_nova_equity"
+        },
+        {
+          "fact_id": "nvhr_f0052",
+          "text": "Refresh RSU grants are considered during the annual compensation review cycle.",
+          "doc_id": "doc_nova_equity"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_equity",
+          "filename": "equity_plan_rsus.pdf",
+          "page_numbers": [
+            11,
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0038",
+      "query": "How often does NovaCorp benchmark base salary against market data?",
+      "gt_answer": "Annually, during the March compensation review cycle",
+      "categories": [
+        "temporal",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0053",
+          "text": "Base salaries are benchmarked annually during the March compensation review.",
+          "doc_id": "doc_nova_comp"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_comp",
+          "filename": "compensation_philosophy.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0039",
+      "query": "What is the salary band structure at NovaCorp?",
+      "gt_answer": "Bands with a 40% spread between minimum and maximum, midpoint aligned to 50th percentile of market",
+      "categories": [
+        "numerical",
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0054",
+          "text": "Salary bands have a 40% spread between minimum and maximum.",
+          "doc_id": "doc_nova_comp"
+        },
+        {
+          "fact_id": "nvhr_f0055",
+          "text": "Band midpoints are aligned to the 50th percentile of market data.",
+          "doc_id": "doc_nova_comp"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_comp",
+          "filename": "compensation_philosophy.pdf",
+          "page_numbers": [
+            5,
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0040",
+      "query": "Compare bonus target for individual contributors (IC) versus managers at the same level.",
+      "gt_answer": "Managers have a 5-percentage-point higher target bonus than ICs at the same level",
+      "categories": [
+        "comparative",
+        "numerical"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0056",
+          "text": "Manager target bonus percentages are 5 percentage points higher than ICs at the same level.",
+          "doc_id": "doc_nova_bonus"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_bonus",
+          "filename": "annual_bonus_plan.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0041",
+      "query": "How often are US employees paid?",
+      "gt_answer": "Semi-monthly, on the 15th and last business day",
+      "categories": [
+        "temporal",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0057",
+          "text": "US employees are paid semi-monthly.",
+          "doc_id": "doc_nova_payroll"
+        },
+        {
+          "fact_id": "nvhr_f0058",
+          "text": "US pay dates are the 15th and the last business day of the month.",
+          "doc_id": "doc_nova_payroll"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_payroll",
+          "filename": "payroll_calendar_2025.pdf",
+          "page_numbers": [
+            3,
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0042",
+      "query": "When are Indian employees paid?",
+      "gt_answer": "Monthly, on the last working day of the month",
+      "categories": [
+        "temporal",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0059",
+          "text": "Indian employees are paid monthly on the last working day.",
+          "doc_id": "doc_nova_payroll"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_payroll",
+          "filename": "payroll_calendar_2025.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0043",
+      "query": "By what date must changes to bank account details for US payroll be submitted?",
+      "gt_answer": "By the 5th of the month for the 15th pay date",
+      "categories": [
+        "temporal",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0060",
+          "text": "US payroll bank account changes must be submitted by the 5th of the month.",
+          "doc_id": "doc_nova_payroll"
+        },
+        {
+          "fact_id": "nvhr_f0061",
+          "text": "US payroll bank account changes submitted by the 5th take effect for the 15th pay date.",
+          "doc_id": "doc_nova_payroll"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_payroll",
+          "filename": "payroll_calendar_2025.pdf",
+          "page_numbers": [
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0044",
+      "query": "How is overtime calculated for non-exempt US employees?",
+      "gt_answer": "1.5x the regular rate for hours worked beyond 40 in a workweek",
+      "categories": [
+        "numerical",
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0062",
+          "text": "Non-exempt US employees receive overtime at 1.5x the regular rate.",
+          "doc_id": "doc_nova_payroll"
+        },
+        {
+          "fact_id": "nvhr_f0063",
+          "text": "US overtime applies to hours worked beyond 40 in a workweek.",
+          "doc_id": "doc_nova_payroll"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_payroll",
+          "filename": "payroll_calendar_2025.pdf",
+          "page_numbers": [
+            13,
+            14
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0045",
+      "query": "How many performance review cycles does NovaCorp run per year?",
+      "gt_answer": "Two: mid-year in July and year-end in January",
+      "categories": [
+        "numerical",
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0064",
+          "text": "NovaCorp runs two performance review cycles per year.",
+          "doc_id": "doc_nova_perf"
+        },
+        {
+          "fact_id": "nvhr_f0065",
+          "text": "Reviews take place in July (mid-year) and January (year-end).",
+          "doc_id": "doc_nova_perf"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_perf",
+          "filename": "performance_management.pdf",
+          "page_numbers": [
+            3,
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0046",
+      "query": "What are NovaCorp's five performance rating levels?",
+      "gt_answer": "Below Expectations, Meets Expectations, Exceeds Expectations, Significantly Exceeds, and Role Model",
+      "categories": [
+        "definition",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0066",
+          "text": "The rating levels are Below Expectations, Meets Expectations, Exceeds Expectations, Significantly Exceeds Expectations, and Role Model.",
+          "doc_id": "doc_nova_perf"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_perf",
+          "filename": "performance_management.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0047",
+      "query": "What is a calibration meeting in the performance process?",
+      "gt_answer": "A cross-manager review that aligns ratings for consistency before finalisation",
+      "categories": [
+        "definition",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0067",
+          "text": "Calibration meetings align performance ratings across managers before finalisation.",
+          "doc_id": "doc_nova_perf"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_perf",
+          "filename": "performance_management.pdf",
+          "page_numbers": [
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0048",
+      "query": "What is the standard duration of a Performance Improvement Plan?",
+      "gt_answer": "60 days",
+      "categories": [
+        "numerical",
+        "temporal",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0068",
+          "text": "A standard Performance Improvement Plan runs for 60 days.",
+          "doc_id": "doc_nova_pip"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pip",
+          "filename": "performance_improvement_plan.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0049",
+      "query": "Who must approve initiating a PIP?",
+      "gt_answer": "The manager, skip-level manager, and HR business partner",
+      "categories": [
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0069",
+          "text": "Initiating a PIP requires manager approval.",
+          "doc_id": "doc_nova_pip"
+        },
+        {
+          "fact_id": "nvhr_f0070",
+          "text": "Initiating a PIP requires skip-level manager approval.",
+          "doc_id": "doc_nova_pip"
+        },
+        {
+          "fact_id": "nvhr_f0071",
+          "text": "Initiating a PIP requires HR business partner approval.",
+          "doc_id": "doc_nova_pip"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pip",
+          "filename": "performance_improvement_plan.pdf",
+          "page_numbers": [
+            5,
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0050",
+      "query": "Are employees on a PIP eligible for the annual bonus?",
+      "gt_answer": "No, employees on an active PIP at year-end are not eligible for the annual bonus",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0072",
+          "text": "Employees on an active PIP at year-end are not eligible for the annual bonus.",
+          "doc_id": "doc_nova_pip"
+        },
+        {
+          "fact_id": "nvhr_f0073",
+          "text": "Bonus eligibility requires being in good standing at year-end per the Annual Bonus Plan.",
+          "doc_id": "doc_nova_bonus"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pip",
+          "filename": "performance_improvement_plan.pdf",
+          "page_numbers": [
+            11
+          ]
+        },
+        {
+          "doc_id": "doc_nova_bonus",
+          "filename": "annual_bonus_plan.pdf",
+          "page_numbers": [
+            12
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0051",
+      "query": "What is the annual learning and development budget per employee?",
+      "gt_answer": "USD 1,500 per year",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0074",
+          "text": "Each employee has a USD 1,500 annual L&D budget.",
+          "doc_id": "doc_nova_learning"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_learning",
+          "filename": "learning_and_development.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0052",
+      "query": "What is the tuition reimbursement cap per year?",
+      "gt_answer": "USD 5,250",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0075",
+          "text": "Tuition reimbursement is capped at USD 5,250 per year.",
+          "doc_id": "doc_nova_learning"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_learning",
+          "filename": "learning_and_development.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0053",
+      "query": "Under what conditions must reimbursed tuition be repaid on departure?",
+      "gt_answer": "If the employee leaves within 12 months of the reimbursement, the amount must be repaid pro rata",
+      "categories": [
+        "numerical",
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0076",
+          "text": "Tuition reimbursement must be repaid if the employee leaves within 12 months.",
+          "doc_id": "doc_nova_learning"
+        },
+        {
+          "fact_id": "nvhr_f0077",
+          "text": "Tuition repayment on early departure is calculated pro rata.",
+          "doc_id": "doc_nova_learning"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_learning",
+          "filename": "learning_and_development.pdf",
+          "page_numbers": [
+            9,
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0054",
+      "query": "Which onboarding milestone occurs at 30 days for new hires?",
+      "gt_answer": "The 30-day check-in with the hiring manager and HR business partner",
+      "categories": [
+        "temporal",
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0078",
+          "text": "A 30-day check-in with the hiring manager is scheduled during onboarding.",
+          "doc_id": "doc_nova_onboarding"
+        },
+        {
+          "fact_id": "nvhr_f0079",
+          "text": "The 30-day onboarding check-in also includes the HR business partner.",
+          "doc_id": "doc_nova_onboarding"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_onboarding",
+          "filename": "new_hire_onboarding.pdf",
+          "page_numbers": [
+            8,
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0055",
+      "query": "Which system provisions accounts for new hires on day 1?",
+      "gt_answer": "The identity platform (Okta) triggered by Workday hire event",
+      "categories": [
+        "entity-centric",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0080",
+          "text": "New hire accounts are provisioned via the Okta identity platform.",
+          "doc_id": "doc_nova_onboarding"
+        },
+        {
+          "fact_id": "nvhr_f0081",
+          "text": "Okta account provisioning is triggered by the Workday hire event.",
+          "doc_id": "doc_nova_onboarding"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_onboarding",
+          "filename": "new_hire_onboarding.pdf",
+          "page_numbers": [
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0056",
+      "query": "When are exit interviews conducted?",
+      "gt_answer": "During the final week of employment",
+      "categories": [
+        "temporal",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0082",
+          "text": "Exit interviews are conducted during the final week of employment.",
+          "doc_id": "doc_nova_offboarding"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_offboarding",
+          "filename": "offboarding_checklist.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0057",
+      "query": "How soon must company equipment be returned upon departure?",
+      "gt_answer": "Within 5 business days of the last working day",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0083",
+          "text": "Company equipment must be returned within 5 business days of the last working day.",
+          "doc_id": "doc_nova_offboarding"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_offboarding",
+          "filename": "offboarding_checklist.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0058",
+      "query": "What is the referral bonus for a senior engineering hire?",
+      "gt_answer": "USD 4,000",
+      "categories": [
+        "numerical",
+        "entity-centric"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0084",
+          "text": "The referral bonus for a senior engineering hire is USD 4,000.",
+          "doc_id": "doc_nova_referral"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_referral",
+          "filename": "employee_referral_program.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0059",
+      "query": "When is the referral bonus paid?",
+      "gt_answer": "After the referred employee completes 90 days of employment",
+      "categories": [
+        "temporal",
+        "numerical"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0085",
+          "text": "Referral bonuses are paid after the referred employee completes 90 days.",
+          "doc_id": "doc_nova_referral"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_referral",
+          "filename": "employee_referral_program.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0060",
+      "query": "Is employees' personal use of company laptops permitted?",
+      "gt_answer": "Limited personal use is permitted provided it does not interfere with work or violate other policies",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0086",
+          "text": "Limited personal use of company devices is permitted.",
+          "doc_id": "doc_nova_it_aup"
+        },
+        {
+          "fact_id": "nvhr_f0087",
+          "text": "Personal use must not interfere with work or violate other policies.",
+          "doc_id": "doc_nova_it_aup"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_it_aup",
+          "filename": "it_acceptable_use.pdf",
+          "page_numbers": [
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0061",
+      "query": "What is the minimum password length for NovaCorp accounts?",
+      "gt_answer": "14 characters",
+      "categories": [
+        "numerical",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0088",
+          "text": "Passwords must be at least 14 characters long.",
+          "doc_id": "doc_nova_security"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_security",
+          "filename": "information_security_policy.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0062",
+      "query": "Is multi-factor authentication required for all NovaCorp accounts?",
+      "gt_answer": "Yes, MFA is required for all employee accounts",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0089",
+          "text": "Multi-factor authentication is required for all employee accounts.",
+          "doc_id": "doc_nova_security"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_security",
+          "filename": "information_security_policy.pdf",
+          "page_numbers": [
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0063",
+      "query": "Within how many hours must a suspected security incident be reported?",
+      "gt_answer": "Within 4 hours of discovery",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0090",
+          "text": "Suspected security incidents must be reported within 4 hours of discovery.",
+          "doc_id": "doc_nova_security"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_security",
+          "filename": "information_security_policy.pdf",
+          "page_numbers": [
+            11
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0064",
+      "query": "What is the monthly BYOD stipend for employees using personal phones for work?",
+      "gt_answer": "USD 50 per month",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0091",
+          "text": "The BYOD monthly stipend is USD 50 for personal-phone use.",
+          "doc_id": "doc_nova_byod"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_byod",
+          "filename": "byod_policy.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0065",
+      "query": "What device management is required for BYOD phones?",
+      "gt_answer": "Enrollment in the NovaCorp MDM profile",
+      "categories": [
+        "definition",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0092",
+          "text": "BYOD phones must be enrolled in the NovaCorp MDM profile.",
+          "doc_id": "doc_nova_byod"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_byod",
+          "filename": "byod_policy.pdf",
+          "page_numbers": [
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0066",
+      "query": "Does NovaCorp monitor employee email content?",
+      "gt_answer": "Automated scanning for security threats and DLP; content review only under approved investigations",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0093",
+          "text": "Automated scanning of employee email is performed for security threats and DLP.",
+          "doc_id": "doc_nova_it_aup"
+        },
+        {
+          "fact_id": "nvhr_f0094",
+          "text": "Content review of employee email is only performed under approved investigations.",
+          "doc_id": "doc_nova_it_aup"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_it_aup",
+          "filename": "it_acceptable_use.pdf",
+          "page_numbers": [
+            8,
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0067",
+      "query": "Compare the reporting timelines for a security incident and a HR grievance.",
+      "gt_answer": "Security incident: 4 hours; HR grievance: within 5 business days",
+      "categories": [
+        "comparative",
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0095",
+          "text": "Security incidents must be reported within 4 hours.",
+          "doc_id": "doc_nova_security"
+        },
+        {
+          "fact_id": "nvhr_f0096",
+          "text": "HR grievances should be filed within 5 business days of the incident.",
+          "doc_id": "doc_nova_grievance"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_security",
+          "filename": "information_security_policy.pdf",
+          "page_numbers": [
+            11
+          ]
+        },
+        {
+          "doc_id": "doc_nova_grievance",
+          "filename": "grievance_procedure.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0068",
+      "query": "How can employees report a suspected code-of-conduct violation anonymously?",
+      "gt_answer": "Through the NovaSpeak helpline operated by an independent third party",
+      "categories": [
+        "entity-centric",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0097",
+          "text": "The NovaSpeak helpline enables anonymous reporting of code-of-conduct violations.",
+          "doc_id": "doc_nova_code"
+        },
+        {
+          "fact_id": "nvhr_f0098",
+          "text": "The NovaSpeak helpline is operated by an independent third-party provider.",
+          "doc_id": "doc_nova_code"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_code",
+          "filename": "code_of_conduct.pdf",
+          "page_numbers": [
+            8,
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0069",
+      "query": "What is NovaCorp's stance on retaliation for reporting harassment?",
+      "gt_answer": "Retaliation against reporters is strictly prohibited and is a terminable offence",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0099",
+          "text": "Retaliation against harassment reporters is strictly prohibited and terminable.",
+          "doc_id": "doc_nova_harassment"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_harassment",
+          "filename": "anti_harassment_policy.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0070",
+      "query": "Within how many days must a harassment complaint acknowledgement be sent?",
+      "gt_answer": "Within 3 business days",
+      "categories": [
+        "numerical",
+        "temporal",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0100",
+          "text": "Harassment complaint acknowledgements must be sent within 3 business days.",
+          "doc_id": "doc_nova_harassment"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_harassment",
+          "filename": "anti_harassment_policy.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0071",
+      "query": "What ERGs are officially recognized at NovaCorp?",
+      "gt_answer": "Women@Nova, Nova Pride, Nova Veterans, Nova Parents, Nova Neurodiversity",
+      "categories": [
+        "entity-centric",
+        "lookup",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0101",
+          "text": "Women@Nova and Nova Pride are officially recognised ERGs.",
+          "doc_id": "doc_nova_diversity"
+        },
+        {
+          "fact_id": "nvhr_f0102",
+          "text": "Nova Veterans, Nova Parents, and Nova Neurodiversity are officially recognised ERGs.",
+          "doc_id": "doc_nova_diversity"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_diversity",
+          "filename": "diversity_equity_inclusion.pdf",
+          "page_numbers": [
+            6,
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0072",
+      "query": "How much annual funding does each ERG receive?",
+      "gt_answer": "USD 5,000 per year",
+      "categories": [
+        "numerical",
+        "entity-centric",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0103",
+          "text": "Each officially recognised ERG receives USD 5,000 in annual funding.",
+          "doc_id": "doc_nova_diversity"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_diversity",
+          "filename": "diversity_equity_inclusion.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0073",
+      "query": "What are the escalation steps in the grievance procedure?",
+      "gt_answer": "Manager -> skip-level manager -> HR business partner -> HR Director",
+      "categories": [
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0104",
+          "text": "Grievance escalation begins with the direct manager.",
+          "doc_id": "doc_nova_grievance"
+        },
+        {
+          "fact_id": "nvhr_f0105",
+          "text": "Grievance escalation continues to the skip-level manager and HR business partner.",
+          "doc_id": "doc_nova_grievance"
+        },
+        {
+          "fact_id": "nvhr_f0106",
+          "text": "Final grievance escalation is to the HR Director.",
+          "doc_id": "doc_nova_grievance"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_grievance",
+          "filename": "grievance_procedure.pdf",
+          "page_numbers": [
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0074",
+      "query": "Can grievances be filed anonymously?",
+      "gt_answer": "Yes, through NovaSpeak, though anonymous filings may limit investigation scope",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0107",
+          "text": "Grievances can be filed anonymously through NovaSpeak.",
+          "doc_id": "doc_nova_grievance"
+        },
+        {
+          "fact_id": "nvhr_f0108",
+          "text": "Anonymous grievances may limit the scope of the investigation.",
+          "doc_id": "doc_nova_grievance"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_grievance",
+          "filename": "grievance_procedure.pdf",
+          "page_numbers": [
+            8,
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0075",
+      "query": "Are relationships between managers and direct reports permitted?",
+      "gt_answer": "Not permitted; must be disclosed and one party will be reassigned",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0109",
+          "text": "Manager-direct-report relationships are not permitted at NovaCorp.",
+          "doc_id": "doc_nova_code"
+        },
+        {
+          "fact_id": "nvhr_f0110",
+          "text": "Existing manager-direct-report relationships must be disclosed and one party reassigned.",
+          "doc_id": "doc_nova_code"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_code",
+          "filename": "code_of_conduct.pdf",
+          "page_numbers": [
+            12,
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0076",
+      "query": "What is the maximum duration of a single contractor engagement?",
+      "gt_answer": "12 months, extendable once by up to 6 months with HR approval",
+      "categories": [
+        "numerical",
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0111",
+          "text": "A contractor engagement is capped at 12 months in duration.",
+          "doc_id": "doc_nova_contractor"
+        },
+        {
+          "fact_id": "nvhr_f0112",
+          "text": "Contractor engagements can be extended once by up to 6 months with HR approval.",
+          "doc_id": "doc_nova_contractor"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_contractor",
+          "filename": "contractor_engagement.pdf",
+          "page_numbers": [
+            3,
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0077",
+      "query": "Are contractors eligible for NovaCorp benefits?",
+      "gt_answer": "No, contractors are not eligible for NovaCorp benefits",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0113",
+          "text": "Contractors are not eligible for NovaCorp employee benefits.",
+          "doc_id": "doc_nova_contractor"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_contractor",
+          "filename": "contractor_engagement.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0078",
+      "query": "Compare paid time off eligibility for employees versus contractors.",
+      "gt_answer": "Employees accrue paid vacation and sick time; contractors follow their SOW",
+      "categories": [
+        "comparative",
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0114",
+          "text": "Employees accrue paid vacation and sick time.",
+          "doc_id": "doc_nova_pto"
+        },
+        {
+          "fact_id": "nvhr_f0115",
+          "text": "Contractor time off is governed by the terms of their statement of work, not the PTO policy.",
+          "doc_id": "doc_nova_contractor"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pto",
+          "filename": "pto_policy_global.pdf",
+          "page_numbers": [
+            4
+          ]
+        },
+        {
+          "doc_id": "doc_nova_contractor",
+          "filename": "contractor_engagement.pdf",
+          "page_numbers": [
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0079",
+      "query": "Does NovaCorp cover the H-1B visa filing fees for eligible employees?",
+      "gt_answer": "Yes, NovaCorp covers standard H-1B filing fees and legal support",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0116",
+          "text": "NovaCorp covers standard H-1B filing fees for eligible employees.",
+          "doc_id": "doc_nova_immigration"
+        },
+        {
+          "fact_id": "nvhr_f0117",
+          "text": "NovaCorp provides legal support for H-1B filings.",
+          "doc_id": "doc_nova_immigration"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_immigration",
+          "filename": "immigration_and_relocation.pdf",
+          "page_numbers": [
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0080",
+      "query": "What is the domestic relocation reimbursement cap?",
+      "gt_answer": "USD 12,000",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0118",
+          "text": "Domestic relocation reimbursement is capped at USD 12,000.",
+          "doc_id": "doc_nova_immigration"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_immigration",
+          "filename": "immigration_and_relocation.pdf",
+          "page_numbers": [
+            9
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0081",
+      "query": "What is the international relocation reimbursement cap?",
+      "gt_answer": "USD 30,000",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0119",
+          "text": "International relocation reimbursement is capped at USD 30,000.",
+          "doc_id": "doc_nova_immigration"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_immigration",
+          "filename": "immigration_and_relocation.pdf",
+          "page_numbers": [
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0082",
+      "query": "Under what conditions must relocation reimbursement be repaid?",
+      "gt_answer": "If the employee leaves within 12 months, on a pro-rata basis",
+      "categories": [
+        "numerical",
+        "temporal",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0120",
+          "text": "Relocation reimbursement must be repaid if the employee leaves within 12 months.",
+          "doc_id": "doc_nova_immigration"
+        },
+        {
+          "fact_id": "nvhr_f0121",
+          "text": "Relocation repayment on early departure is calculated pro rata.",
+          "doc_id": "doc_nova_immigration"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_immigration",
+          "filename": "immigration_and_relocation.pdf",
+          "page_numbers": [
+            12,
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0083",
+      "query": "How many free EAP counseling sessions are provided per year?",
+      "gt_answer": "8 sessions per issue per year",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0122",
+          "text": "The EAP provides 8 free counseling sessions per issue per year.",
+          "doc_id": "doc_nova_wellness"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_wellness",
+          "filename": "wellness_and_eap.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0084",
+      "query": "What annual wellness stipend is provided?",
+      "gt_answer": "USD 600 per year",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0123",
+          "text": "Employees receive a USD 600 annual wellness stipend.",
+          "doc_id": "doc_nova_wellness"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_wellness",
+          "filename": "wellness_and_eap.pdf",
+          "page_numbers": [
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0085",
+      "query": "Are ergonomic assessments provided at no cost?",
+      "gt_answer": "Yes, ergonomic assessments are provided at no cost for all employees",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0124",
+          "text": "Ergonomic assessments are provided at no cost to employees.",
+          "doc_id": "doc_nova_hs"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_hs",
+          "filename": "workplace_health_safety.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0086",
+      "query": "What personal data does the Employee Privacy Notice say NovaCorp collects?",
+      "gt_answer": "Identity, contact, employment, payroll, tax, benefits enrollment, and IT usage data",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0125",
+          "text": "The Employee Privacy Notice states that NovaCorp collects identity and contact data.",
+          "doc_id": "doc_nova_privacy"
+        },
+        {
+          "fact_id": "nvhr_f0126",
+          "text": "The Employee Privacy Notice states that NovaCorp collects employment, payroll, and tax data.",
+          "doc_id": "doc_nova_privacy"
+        },
+        {
+          "fact_id": "nvhr_f0127",
+          "text": "The Employee Privacy Notice states that NovaCorp collects benefits enrollment and IT usage data.",
+          "doc_id": "doc_nova_privacy"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_privacy",
+          "filename": "employee_privacy_notice.pdf",
+          "page_numbers": [
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0087",
+      "query": "How long is job-application data retained for unsuccessful candidates?",
+      "gt_answer": "12 months, unless the candidate consents to longer retention",
+      "categories": [
+        "temporal",
+        "numerical",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0128",
+          "text": "Job-application data of unsuccessful candidates is retained for 12 months by default.",
+          "doc_id": "doc_nova_privacy"
+        },
+        {
+          "fact_id": "nvhr_f0129",
+          "text": "Retention beyond 12 months for unsuccessful candidate data requires explicit consent.",
+          "doc_id": "doc_nova_privacy"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_privacy",
+          "filename": "employee_privacy_notice.pdf",
+          "page_numbers": [
+            7,
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0088",
+      "query": "Who is NovaCorp's Data Protection Officer?",
+      "gt_answer": "The Group Data Protection Officer, based in Ireland",
+      "categories": [
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0130",
+          "text": "The Group Data Protection Officer at NovaCorp is based in Ireland.",
+          "doc_id": "doc_nova_privacy"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_privacy",
+          "filename": "employee_privacy_notice.pdf",
+          "page_numbers": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0089",
+      "query": "By when must expense reports be submitted after a business trip?",
+      "gt_answer": "Within 30 calendar days of trip end",
+      "categories": [
+        "temporal",
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0131",
+          "text": "Expense reports must be submitted within 30 calendar days of trip end.",
+          "doc_id": "doc_nova_expenses"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_expenses",
+          "filename": "expense_reimbursement.pdf",
+          "page_numbers": [
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0090",
+      "query": "What is the receipt threshold above which employees must attach a scanned receipt?",
+      "gt_answer": "USD 25",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0132",
+          "text": "Scanned receipts must be attached for any expense above USD 25.",
+          "doc_id": "doc_nova_expenses"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_expenses",
+          "filename": "expense_reimbursement.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0091",
+      "query": "Which policies together govern a new full-time hire relocating internationally?",
+      "gt_answer": "Immigration & Relocation, Onboarding, and the relevant regional Benefits Guide",
+      "categories": [
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0133",
+          "text": "International relocation is governed by the Immigration & Relocation policy.",
+          "doc_id": "doc_nova_immigration"
+        },
+        {
+          "fact_id": "nvhr_f0134",
+          "text": "Day-1 onboarding tasks are governed by the New Hire Onboarding policy.",
+          "doc_id": "doc_nova_onboarding"
+        },
+        {
+          "fact_id": "nvhr_f0135",
+          "text": "Region-specific benefits are governed by the relevant regional Benefits Guide.",
+          "doc_id": "doc_nova_benefits_us"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_immigration",
+          "filename": "immigration_and_relocation.pdf",
+          "page_numbers": [
+            4
+          ]
+        },
+        {
+          "doc_id": "doc_nova_onboarding",
+          "filename": "new_hire_onboarding.pdf",
+          "page_numbers": [
+            3
+          ]
+        },
+        {
+          "doc_id": "doc_nova_benefits_us",
+          "filename": "benefits_guide_us_2025.pdf",
+          "page_numbers": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0092",
+      "query": "For a US employee on a PIP who resigns mid-cycle, what happens to unvested RSUs?",
+      "gt_answer": "They are forfeited on the last day of employment regardless of PIP status",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0136",
+          "text": "Unvested RSUs are forfeited on the last day of employment upon voluntary resignation.",
+          "doc_id": "doc_nova_equity"
+        },
+        {
+          "fact_id": "nvhr_f0137",
+          "text": "PIP status does not modify RSU forfeiture rules.",
+          "doc_id": "doc_nova_equity"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_equity",
+          "filename": "equity_plan_rsus.pdf",
+          "page_numbers": [
+            9,
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0093",
+      "query": "Compare paid parental leave availability for primary and secondary caregivers.",
+      "gt_answer": "Primary caregiver: 16 weeks paid; secondary caregiver: 6 weeks paid",
+      "categories": [
+        "comparative",
+        "numerical"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0138",
+          "text": "NovaCorp provides 16 weeks of paid parental leave to primary caregivers globally.",
+          "doc_id": "doc_nova_parental"
+        },
+        {
+          "fact_id": "nvhr_f0139",
+          "text": "Secondary caregivers receive 6 weeks of paid parental leave.",
+          "doc_id": "doc_nova_parental"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_parental",
+          "filename": "parental_leave_policy.pdf",
+          "page_numbers": [
+            2,
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0094",
+      "query": "Are hybrid employees eligible for the one-time home-office equipment stipend?",
+      "gt_answer": "No, the one-time stipend is limited to fully remote employees",
+      "categories": [
+        "comparative",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0140",
+          "text": "The one-time home-office equipment stipend is limited to fully remote employees.",
+          "doc_id": "doc_nova_remote"
+        },
+        {
+          "fact_id": "nvhr_f0141",
+          "text": "Hybrid employees are not eligible for the one-time home-office equipment stipend.",
+          "doc_id": "doc_nova_remote"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_remote",
+          "filename": "remote_work_policy.pdf",
+          "page_numbers": [
+            6,
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0095",
+      "query": "What happens to accrued but unused vacation on termination?",
+      "gt_answer": "It is paid out in the final paycheck where required by law",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0142",
+          "text": "Accrued unused vacation is paid out in the final paycheck where required by law.",
+          "doc_id": "doc_nova_pto"
+        },
+        {
+          "fact_id": "nvhr_f0143",
+          "text": "Some jurisdictions do not mandate payout of accrued vacation on termination.",
+          "doc_id": "doc_nova_pto"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_pto",
+          "filename": "pto_policy_global.pdf",
+          "page_numbers": [
+            15,
+            16
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0096",
+      "query": "Which combination of policies applies to a UK employee going on maternity leave?",
+      "gt_answer": "UK Benefits Guide, Parental Leave Policy, and Payroll Calendar",
+      "categories": [
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0144",
+          "text": "UK statutory maternity leave and top-up are documented in the UK Benefits Guide.",
+          "doc_id": "doc_nova_benefits_eu"
+        },
+        {
+          "fact_id": "nvhr_f0145",
+          "text": "Parental leave scheduling is governed by the Parental Leave Policy.",
+          "doc_id": "doc_nova_parental"
+        },
+        {
+          "fact_id": "nvhr_f0146",
+          "text": "Pay during parental leave is processed according to the Payroll Calendar.",
+          "doc_id": "doc_nova_payroll"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_benefits_eu",
+          "filename": "benefits_guide_eu_2025.pdf",
+          "page_numbers": [
+            11
+          ]
+        },
+        {
+          "doc_id": "doc_nova_parental",
+          "filename": "parental_leave_policy.pdf",
+          "page_numbers": [
+            2
+          ]
+        },
+        {
+          "doc_id": "doc_nova_payroll",
+          "filename": "payroll_calendar_2025.pdf",
+          "page_numbers": [
+            7
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0097",
+      "query": "What is NovaCorp's official policy on employees adopting a pet as an emotional support animal in the office?",
+      "gt_answer": "Not addressed in current NovaCorp HR policies",
+      "categories": [
+        "single-hop",
+        "lookup"
+      ],
+      "difficulty": "hard",
+      "eval_label": "unanswerable",
+      "gt_supporting_facts": [],
+      "gt_documents": [],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0098",
+      "query": "Does NovaCorp offer a company car benefit for engineering roles?",
+      "gt_answer": "Not addressed in current NovaCorp HR policies",
+      "categories": [
+        "single-hop",
+        "lookup"
+      ],
+      "difficulty": "hard",
+      "eval_label": "unanswerable",
+      "gt_supporting_facts": [],
+      "gt_documents": [],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0099",
+      "query": "How long is the standard notice period for voluntary resignation of a UK employee?",
+      "gt_answer": "One month for salaried employees, longer per contract for senior roles",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0147",
+          "text": "The standard UK voluntary-resignation notice period is one month for salaried employees.",
+          "doc_id": "doc_nova_handbook"
+        },
+        {
+          "fact_id": "nvhr_f0148",
+          "text": "Senior UK roles may be subject to longer notice periods per individual contract.",
+          "doc_id": "doc_nova_handbook"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_handbook",
+          "filename": "employee_handbook_2025.pdf",
+          "page_numbers": [
+            22,
+            23
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "nvhr_q0100",
+      "query": "What is the escalation path when an employee has a payroll discrepancy?",
+      "gt_answer": "Report to the manager and Payroll team within one pay cycle; unresolved cases escalate to HR business partner",
+      "categories": [
+        "multi-hop",
+        "temporal"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "nvhr_f0149",
+          "text": "Payroll discrepancies must be reported to the manager and Payroll team within one pay cycle.",
+          "doc_id": "doc_nova_payroll"
+        },
+        {
+          "fact_id": "nvhr_f0150",
+          "text": "Unresolved payroll discrepancies escalate to the HR business partner.",
+          "doc_id": "doc_nova_payroll"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_nova_payroll",
+          "filename": "payroll_calendar_2025.pdf",
+          "page_numbers": [
+            16,
+            17
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    }
+  ]
+}

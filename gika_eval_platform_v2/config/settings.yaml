@@ -1,0 +1,58 @@
+# Global application settings for the GIKA Eval Platform (MVP).
+# Environment variables prefixed with GIKA_ override any value here
+# (see app/core/config.py).
+
+app_name: "GIKA Dataset Evaluation & Analytics Platform"
+env: "local"
+
+# SQLAlchemy DB URL. SQLite for the MVP.
+db_url: "sqlite:///./data/gika_eval.db"
+
+# Mock retrieval API bind config (used by scripts/run_mock_api.py).
+mock_api_host: "127.0.0.1"
+mock_api_port: 8000
+
+# Default retrieval endpoint the evaluator calls.
+retrieval_endpoint: "http://127.0.0.1:8000/retrieve"
+
+# Paths (relative to project root).
+paths:
+  # V1 sample dataset: the attached MuSiQue-validation benchmark, ingested via
+  # the MusiqueAdapter (app/ingestion/adapters/musique.py). The older internal
+  # samples under data/sample_dataset/ and data/synthetic_*/ are still supported
+  # via the NativeAdapter and can be loaded by passing --dataset-json to the
+  # CLI or uploading them through the dashboard.
+  sample_dataset: "data/synthetic_enterprise_bench/dataset.json"
+  sample_leaderboard: "data/musique_sample/leaderboard.json"
+  raw_responses_dir: "data/raw_responses"
+  exports_dir: "data/exports"
+  checkpoints_dir: "data/checkpoints"
+  outputs_dir: "outputs"
+
+# Evaluation execution defaults.
+evaluation:
+  # V1: no top_k parameter (Directive Section 4.2 — retrieval engine determines
+  # traversal internally). The mock retriever uses a mock-only internal cap
+  # configurable via provider_config.extra.mock_max_nodes.
+  request_timeout_s: 15.0
+  max_retries: 3
+  backoff_base_s: 0.5      # exponential backoff base
+  backoff_max_s: 8.0
+  batch_size: 8            # queries processed per batch
+
+# Benchmarking modules (V1 answer generation + LLM judge). Both fall back to a
+# deterministic offline implementation when no LLM endpoint is configured.
+benchmarking:
+  # Answer-generation module used by the executor. Options:
+  #   extractive  - deterministic, joins retrieved facts (no LLM required)
+  #   llm        - calls GIKA_LLM_ENDPOINT with GIKA_LLM_API_KEY if set;
+  #                 falls back to extractive when not configured
+  answer_generator: "extractive"
+  # LLM Judge module. Options:
+  #   heuristic  - deterministic multi-answer / substring / token-overlap grader
+  #   llm       - calls GIKA_LLM_ENDPOINT with GIKA_LLM_API_KEY if set;
+  #                 falls back to heuristic when not configured
+  judge: "heuristic"
+
+logging:
+  level: "INFO"

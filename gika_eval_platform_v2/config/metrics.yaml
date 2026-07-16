@@ -1,0 +1,36 @@
+# Metric configuration for V1.
+# The active V1 metric set (from Directive Section 5.1) is:
+#   Retrieval side: Retrieval Recall, Precision, F1, Document Recall
+#   Answer side:   Exact Match, LLM Judge Score, Semantic Similarity
+#
+# Ranking-based metrics (Recall@K, MRR, NDCG, MAP) are DEFERRED per Section 5.2
+# and no longer read by the V1 metric registry. They are kept as extensible
+# stubs in app/metrics/ranking.py for later reactivation once GIKA exposes
+# calibrated ranking data.
+
+# Normalize text (lowercase, strip punctuation/articles/whitespace) before
+# Exact Match comparison.
+em_normalize: true
+
+# Success rule (used by failure taxonomy / success flag):
+# a query is considered "successful" if recall >= success_recall_threshold
+# AND document_recall >= success_doc_recall_threshold.
+success_recall_threshold: 0.5
+success_doc_recall_threshold: 0.5
+
+# Semantic similarity: token-overlap Jaccard (V1 offline stub). Threshold only
+# used for optional reporting, not for the success flag.
+semantic_similarity_threshold: 0.6
+
+# LLM Judge: minimum judge score at which the answer is considered "good".
+llm_judge_pass_threshold: 0.7
+
+# Internal-only knob used by the failure taxonomy: a relevant node retrieved
+# below this rank contributes to LOW_RANK_RELEVANT_NODE classification. Not a
+# ranking metric — kept as an internal diagnostic signal per V1 Section 5.2's
+# extensibility note.
+low_rank_threshold: 3
+
+# --- DEFERRED (V1) --- kept for forward compatibility; not read by V1. ---
+# recall_at_k: [1, 3, 5, 10]
+# answerability_fact_coverage_threshold: 0.5

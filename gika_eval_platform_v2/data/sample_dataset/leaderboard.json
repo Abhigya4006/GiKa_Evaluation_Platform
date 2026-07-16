@@ -1,0 +1,35 @@
+{
+  "dataset_id": "eu_ai_act_bench",
+  "entries": [
+    {
+      "system_name": "BaselineRAG",
+      "metric": "f1",
+      "value": 0.71
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "exact_match",
+      "value": 0.58
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "recall",
+      "value": 0.74
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "document_recall",
+      "value": 0.69
+    },
+    {
+      "system_name": "GraphRAG-v2",
+      "metric": "f1",
+      "value": 0.8
+    },
+    {
+      "system_name": "GraphRAG-v2",
+      "metric": "exact_match",
+      "value": 0.66
+    }
+  ]
+}

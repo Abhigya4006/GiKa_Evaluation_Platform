@@ -1,0 +1,1056 @@
+{
+  "dataset_id": "eu_ai_act_bench",
+  "name": "EU AI Act Benchmark",
+  "version": "1.0.0",
+  "domain": "eu_regulations",
+  "source": "internal-curated",
+  "metric_config": {
+    "recall_at_k": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "em_normalize": true
+  },
+  "leaderboard": [
+    {
+      "system_name": "BaselineRAG",
+      "metric": "f1",
+      "value": 0.71
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "exact_match",
+      "value": 0.58
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "recall",
+      "value": 0.74
+    },
+    {
+      "system_name": "BaselineRAG",
+      "metric": "document_recall",
+      "value": 0.69
+    },
+    {
+      "system_name": "GraphRAG-v2",
+      "metric": "f1",
+      "value": 0.8
+    },
+    {
+      "system_name": "GraphRAG-v2",
+      "metric": "exact_match",
+      "value": 0.66
+    }
+  ],
+  "items": [
+    {
+      "query_id": "q_0001",
+      "query": "When was the EU AI Act officially published?",
+      "gt_answer": "12 July 2024",
+      "categories": [
+        "temporal",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0001",
+          "text": "The EU AI Act was published in the Official Journal on 12 July 2024.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0002",
+      "query": "When did the EU AI Act enter into force?",
+      "gt_answer": "1 August 2024",
+      "categories": [
+        "temporal",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0002",
+          "text": "The AI Act entered into force on 1 August 2024, twenty days after publication.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            4
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0003",
+      "query": "What are the four risk categories defined by the EU AI Act?",
+      "gt_answer": "Unacceptable, high, limited, and minimal risk",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0003",
+          "text": "The AI Act classifies systems into unacceptable, high, limited and minimal risk.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            8
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0004",
+      "query": "Which AI practices are prohibited under the EU AI Act?",
+      "gt_answer": "Practices such as social scoring by public authorities and manipulative subliminal techniques",
+      "categories": [
+        "definition",
+        "entity-centric",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0004",
+          "text": "Prohibited practices include social scoring by public authorities.",
+          "doc_id": "doc_eu_ai_act_full"
+        },
+        {
+          "fact_id": "f_0005",
+          "text": "Prohibited practices include manipulative subliminal techniques causing harm.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            12,
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0005",
+      "query": "What obligations apply to high-risk AI systems?",
+      "gt_answer": "Conformity assessment, risk management, data governance, and human oversight",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0006",
+          "text": "High-risk AI systems must undergo conformity assessments before market placement.",
+          "doc_id": "doc_eu_ai_act_full"
+        },
+        {
+          "fact_id": "f_0007",
+          "text": "High-risk systems require a risk management system throughout the lifecycle.",
+          "doc_id": "doc_eu_ai_act_full"
+        },
+        {
+          "fact_id": "f_0008",
+          "text": "High-risk systems require human oversight measures.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            22,
+            23,
+            24
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0006",
+      "query": "What is the maximum administrative fine for prohibited AI practices?",
+      "gt_answer": "Up to 35 million euros or 7% of global annual turnover",
+      "categories": [
+        "numerical",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0009",
+          "text": "Fines for prohibited practices can reach 35 million euros or 7% of worldwide annual turnover.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            40
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0007",
+      "query": "Which body coordinates enforcement of the AI Act at EU level?",
+      "gt_answer": "The European AI Office",
+      "categories": [
+        "entity-centric",
+        "lookup",
+        "single-hop"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0010",
+          "text": "The European AI Office coordinates enforcement and supervision at Union level.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            45
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0008",
+      "query": "How does the AI Act define a general-purpose AI model?",
+      "gt_answer": "An AI model with significant generality able to perform a wide range of tasks",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0011",
+          "text": "A general-purpose AI model displays significant generality and can perform a wide range of distinct tasks.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            15
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0009",
+      "query": "What transparency obligations apply to limited-risk AI like chatbots?",
+      "gt_answer": "Users must be informed they are interacting with an AI system",
+      "categories": [
+        "single-hop",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0012",
+          "text": "Providers of limited-risk systems must ensure users are informed they interact with an AI system.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            30
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0010",
+      "query": "How does the EU AI Act relate to the GDPR on personal data?",
+      "gt_answer": "The AI Act complements GDPR; data protection rules continue to apply",
+      "categories": [
+        "multi-hop",
+        "comparative"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0013",
+          "text": "The AI Act applies without prejudice to the GDPR, which continues to govern personal data processing.",
+          "doc_id": "doc_eu_ai_act_full"
+        },
+        {
+          "fact_id": "f_0014",
+          "text": "The GDPR establishes lawful bases for processing personal data.",
+          "doc_id": "doc_gdpr"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            6
+          ]
+        },
+        {
+          "doc_id": "doc_gdpr",
+          "filename": "gdpr_2016.pdf",
+          "page_numbers": [
+            10
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0011",
+      "query": "What are the seven requirements for trustworthy AI in the EU ethics guidelines?",
+      "gt_answer": "Human agency, technical robustness, privacy, transparency, diversity, societal wellbeing, accountability",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0015",
+          "text": "Trustworthy AI guidelines list seven key requirements including human agency and oversight.",
+          "doc_id": "doc_ethics_guidelines"
+        },
+        {
+          "fact_id": "f_0016",
+          "text": "The requirements include technical robustness and safety.",
+          "doc_id": "doc_ethics_guidelines"
+        },
+        {
+          "fact_id": "f_0017",
+          "text": "The requirements include accountability.",
+          "doc_id": "doc_ethics_guidelines"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_ethics_guidelines",
+          "filename": "trustworthy_ai_guidelines.pdf",
+          "page_numbers": [
+            14,
+            15
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0012",
+      "query": "Which annex lists high-risk AI use cases?",
+      "gt_answer": "Annex III",
+      "categories": [
+        "lookup",
+        "single-hop",
+        "temporal"
+      ],
+      "difficulty": "easy",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0018",
+          "text": "Annex III enumerates the high-risk AI use cases such as biometric identification.",
+          "doc_id": "doc_ai_act_annex"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_ai_act_annex",
+          "filename": "eu_ai_act_annexes.pdf",
+          "page_numbers": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0013",
+      "query": "Is real-time remote biometric identification in public spaces banned?",
+      "gt_answer": "It is prohibited in principle for law enforcement, with narrow exceptions",
+      "categories": [
+        "single-hop",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0019",
+          "text": "Real-time remote biometric identification in publicly accessible spaces for law enforcement is prohibited, subject to narrow exceptions.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            13
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0014",
+      "query": "What penalties apply for supplying incorrect information to authorities?",
+      "gt_answer": "Up to 7.5 million euros or 1% of global annual turnover",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0020",
+          "text": "Supplying incorrect, incomplete or misleading information can lead to fines up to 7.5 million euros or 1% of annual turnover.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            41
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0015",
+      "query": "What is a conformity assessment under the AI Act?",
+      "gt_answer": "A procedure demonstrating a high-risk system meets the Act's requirements",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0021",
+          "text": "A conformity assessment is the process demonstrating that a high-risk AI system complies with the requirements of the Act.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            26
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0016",
+      "query": "Which systems are considered minimal risk and largely unregulated?",
+      "gt_answer": "Systems such as spam filters and AI-enabled video games",
+      "categories": [
+        "definition",
+        "entity-centric"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0022",
+          "text": "Minimal-risk systems, such as spam filters and AI in video games, face no additional obligations.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            31
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0017",
+      "query": "Compare obligations for high-risk versus limited-risk AI systems.",
+      "gt_answer": "High-risk requires conformity assessment and oversight; limited-risk mainly requires transparency",
+      "categories": [
+        "comparative",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0023",
+          "text": "High-risk systems require conformity assessment and human oversight.",
+          "doc_id": "doc_eu_ai_act_full"
+        },
+        {
+          "fact_id": "f_0024",
+          "text": "Limited-risk systems primarily face transparency obligations.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            23,
+            30
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0018",
+      "query": "When do obligations for general-purpose AI models start applying?",
+      "gt_answer": "12 months after entry into force (August 2025)",
+      "categories": [
+        "temporal",
+        "numerical"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0025",
+          "text": "Obligations for general-purpose AI models apply from 12 months after entry into force.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            48
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0019",
+      "query": "What is the role of notified bodies?",
+      "gt_answer": "Independent bodies that assess conformity of certain high-risk systems",
+      "categories": [
+        "entity-centric",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0026",
+          "text": "Notified bodies are independent conformity assessment bodies designated by Member States.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            27
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0020",
+      "query": "Does the AI Act apply to providers established outside the EU?",
+      "gt_answer": "Yes, if their AI system's output is used in the EU",
+      "categories": [
+        "single-hop",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0027",
+          "text": "The AI Act applies to providers outside the EU where the output of the system is used within the Union.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            5
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0021",
+      "query": "What documentation must providers of high-risk systems keep?",
+      "gt_answer": "Technical documentation and automatically generated logs",
+      "categories": [
+        "multi-hop",
+        "definition"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0028",
+          "text": "Providers must draw up technical documentation before the system is placed on the market.",
+          "doc_id": "doc_eu_ai_act_full"
+        },
+        {
+          "fact_id": "f_0029",
+          "text": "High-risk systems must enable automatic recording of logs over their lifetime.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            24,
+            25
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0022",
+      "query": "How is 'serious incident' defined under the AI Act?",
+      "gt_answer": "An incident leading to death, serious harm to health, or serious disruption of critical infrastructure",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0030",
+          "text": "A serious incident is defined as an event leading to death or serious damage to health, property, or critical infrastructure.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            37
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0023",
+      "query": "What is the grace period before most AI Act rules fully apply?",
+      "gt_answer": "24 months after entry into force (August 2026)",
+      "categories": [
+        "temporal",
+        "numerical"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0031",
+          "text": "Most provisions of the AI Act apply 24 months after entry into force.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            49
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0024",
+      "query": "Which regulator handles GDPR complaints about automated decisions?",
+      "gt_answer": "National data protection authorities",
+      "categories": [
+        "entity-centric",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0032",
+          "text": "National data protection authorities enforce the GDPR, including rules on automated individual decision-making.",
+          "doc_id": "doc_gdpr"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_gdpr",
+          "filename": "gdpr_2016.pdf",
+          "page_numbers": [
+            22
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0025",
+      "query": "What are codes of practice used for under the AI Act?",
+      "gt_answer": "To detail compliance for general-purpose AI providers before harmonised standards exist",
+      "categories": [
+        "definition",
+        "multi-hop"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0033",
+          "text": "Codes of practice help general-purpose AI providers demonstrate compliance pending harmonised standards.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            47
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0026",
+      "query": "How many pages is the consolidated EU AI Act text?",
+      "gt_answer": "Approximately 144 pages in the Official Journal",
+      "categories": [
+        "numerical",
+        "lookup"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0034",
+          "text": "The consolidated AI Act text spans roughly 144 pages in the Official Journal.",
+          "doc_id": "doc_commission_faq"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_commission_faq",
+          "filename": "commission_ai_act_faq.pdf",
+          "page_numbers": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0027",
+      "query": "Does the AI Act regulate open-source AI models?",
+      "gt_answer": "Free and open-source models are partly exempt unless they are high-risk or GPAI with systemic risk",
+      "categories": [
+        "multi-hop",
+        "comparative"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0035",
+          "text": "Free and open-source AI components benefit from exemptions unless they are high-risk or systemic-risk GPAI.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            17
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0028",
+      "query": "What threshold defines general-purpose AI with systemic risk?",
+      "gt_answer": "Training compute above 10^25 floating-point operations",
+      "categories": [
+        "numerical",
+        "temporal",
+        "lookup"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0036",
+          "text": "A general-purpose AI model is presumed to pose systemic risk when training compute exceeds 10^25 FLOP.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            16
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0029",
+      "query": "Who bears obligations when a system is substantially modified?",
+      "gt_answer": "The party making the substantial modification is treated as a new provider",
+      "categories": [
+        "multi-hop",
+        "entity-centric"
+      ],
+      "difficulty": "hard",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0037",
+          "text": "A party that substantially modifies a high-risk system assumes the obligations of a provider.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            21
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0030",
+      "query": "What is the sandbox mechanism in the AI Act?",
+      "gt_answer": "Regulatory sandboxes let providers test innovative AI under supervision",
+      "categories": [
+        "definition",
+        "single-hop"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0038",
+          "text": "AI regulatory sandboxes provide a controlled environment to develop and test AI systems under regulatory supervision.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            35
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0031",
+      "query": "What is the EU AI Act's position on faster-than-light communication?",
+      "gt_answer": "Not addressed by the AI Act",
+      "categories": [
+        "single-hop",
+        "lookup"
+      ],
+      "difficulty": "hard",
+      "eval_label": "unanswerable",
+      "gt_supporting_facts": [],
+      "gt_documents": [],
+      "metadata": {
+        "language": "en"
+      }
+    },
+    {
+      "query_id": "q_0032",
+      "query": "What must deployers of emotion recognition systems do?",
+      "gt_answer": "Inform natural persons exposed to the system",
+      "categories": [
+        "single-hop",
+        "definition"
+      ],
+      "difficulty": "medium",
+      "eval_label": "answerable",
+      "gt_supporting_facts": [
+        {
+          "fact_id": "f_0039",
+          "text": "Deployers of emotion recognition systems must inform the natural persons exposed to them.",
+          "doc_id": "doc_eu_ai_act_full"
+        }
+      ],
+      "gt_documents": [
+        {
+          "doc_id": "doc_eu_ai_act_full",
+          "filename": "eu_ai_act_2024.pdf",
+          "page_numbers": [
+            32
+          ]
+        }
+      ],
+      "metadata": {
+        "language": "en"
+      }
+    }
+  ]
+}
