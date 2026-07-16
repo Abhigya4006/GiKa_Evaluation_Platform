@@ -50,24 +50,36 @@ Running Tests
 ```bash
 pytest tests -v
 ```
-API Overview
-Endpoint	Description
-`/api/datasets`	Dataset management
-`/api/runs`	Create and manage evaluation runs
-`/api/metrics`	Available evaluation metrics
-`/api/compare`	Compare evaluation runs
-`/api/exports`	Export results
-Configuration
+## API Overview
+
+| Endpoint | Description |
+|----------|-------------|
+| `/api/datasets` | Dataset management |
+| `/api/runs` | Create and manage evaluation runs |
+| `/api/metrics` | Available evaluation metrics |
+| `/api/compare` | Compare evaluation runs |
+| `/api/exports` | Export results |
+
+---
+
+## Configuration
+
 Environment variables:
-Variable	Purpose
-`GIKA_DB_URL`	SQLite database location
-`GIKA_RETRIEVAL_ENDPOINT`	Retrieval API endpoint
-`GIKA_LLM_ENDPOINT`	LLM endpoint (optional)
-`GIKA_LLM_API_KEY`	LLM API key (optional)
-`VITE_API_BASE_URL`	Backend URL for the frontend
-Deployment
-Backend: FastAPI (Uvicorn/Gunicorn)
-Frontend: Static build (`npm run build`)
-Database: SQLite (replaceable with another backend if required)
-License
-This project was developed as an evaluation platform prototype for benchmarking enterprise retrieval systems.
+
+| Variable | Purpose |
+|----------|---------|
+| `GIKA_DB_URL` | SQLite database location |
+| `GIKA_RETRIEVAL_ENDPOINT` | Retrieval API endpoint |
+| `GIKA_LLM_ENDPOINT` | LLM endpoint (optional) |
+| `GIKA_LLM_API_KEY` | LLM API key (optional) |
+| `VITE_API_BASE_URL` | Backend URL for the frontend |
+
+---
+
+## Deployment
+
+- **Backend:** FastAPI (Uvicorn/Gunicorn)
+- **Frontend:** Static build (`npm run build`)
+- **Database:** SQLite (replaceable with another backend if required)
+
+---
