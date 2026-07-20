@@ -74,16 +74,23 @@ def execute_query(
     )
 
     # --- Step 5b: Compute V2 selected metrics (dynamic). ---
+    # Only compute V2 metrics that are in the user's selection AND not already
+    # covered by V1 fixed columns.
+    _v1_fixed = {"recall", "precision", "f1", "document_recall",
+                 "exact_match", "semantic_similarity",
+                 "llm_judge_score", "llm_judge_verdict", "llm_judge_rationale"}
     v2_results: Dict[str, Any] = {}
     if selected_metrics:
-        v2_results = compute_selected_metrics(
-            selected_metrics,
-            query, canonical,
-            generated_answer=generated_answer,
-            judge_result=judge_result,
-            config=metric_config,
-            available_metrics=available_metrics,
-        )
+        v2_only = [m for m in selected_metrics if m not in _v1_fixed]
+        if v2_only:
+            v2_results = compute_selected_metrics(
+                v2_only,
+                query, canonical,
+                generated_answer=generated_answer,
+                judge_result=judge_result,
+                config=metric_config,
+                available_metrics=available_metrics,
+            )
 
     # --- Step 6: Classify success/failure. ---
     success, failure_type = failure_taxonomy.classify(
@@ -96,7 +103,10 @@ def execute_query(
     )
 
     # --- Step 7: Persist per-query results. ---
-    # 7a: Fixed V1 columns.
+    # 7a: Fixed V1 columns — stored unconditionally (schema has NOT NULL
+    # constraints on recall, precision, f1, exact_match, document_recall).
+    # Filtering of unselected metrics is handled downstream in analytics
+    # aggregation, exports, and the frontend display layer.
     metric_row = {
         "run_id": run_id,
         "query_id": query_id,

@@ -67,7 +67,7 @@ export default function RunDetailPage() {
   const overall = summary.overall;
 
   // Metric keys.
-  const coreMetrics = [
+  const allCoreMetrics = [
     { key: "recall", label: "Recall" },
     { key: "precision", label: "Precision" },
     { key: "f1", label: "F1" },
@@ -79,8 +79,21 @@ export default function RunDetailPage() {
     { key: "num_queries", label: "Queries" },
   ];
 
-  const v1Names = new Set(coreMetrics.map((m) => m.key));
-  const extraMetrics = Object.keys(overall).filter((k) => !v1Names.has(k));
+  // Filter to only metrics the user selected (always show success_rate and num_queries).
+  const runSelectedMetrics: string[] | undefined = run.selected_metrics;
+  const selectedSet = runSelectedMetrics && runSelectedMetrics.length > 0
+    ? new Set([...runSelectedMetrics, "success_rate", "num_queries"])
+    : null;
+  const coreMetrics = selectedSet
+    ? allCoreMetrics.filter((m) => selectedSet.has(m.key))
+    : allCoreMetrics;
+
+  const v1Names = new Set(allCoreMetrics.map((m) => m.key));
+  const extraMetrics = Object.keys(overall).filter((k) => {
+    if (v1Names.has(k)) return false;
+    if (selectedSet && !selectedSet.has(k)) return false;
+    return true;
+  });
 
   // Filtered query rows.
   let filteredRows: QueryRow[] = [...query_rows];
@@ -194,16 +207,24 @@ export default function RunDetailPage() {
       </div>
 
       <div className="card" style={{ overflowX: "auto" }}>
+        {(() => {
+          const qCols: { key: keyof QueryRow; label: string }[] = [
+            { key: "recall", label: "Recall" },
+            { key: "precision", label: "Precision" },
+            { key: "f1", label: "F1" },
+            { key: "document_recall", label: "Doc Recall" },
+            { key: "exact_match", label: "EM" },
+          ];
+          const activeQCols = selectedSet
+            ? qCols.filter((c) => selectedSet.has(c.key as string))
+            : qCols;
+          return (
         <table className="data-table">
           <thead>
             <tr>
               <th>Query ID</th>
               <th>Difficulty</th>
-              <th>Recall</th>
-              <th>Precision</th>
-              <th>F1</th>
-              <th>Doc Recall</th>
-              <th>EM</th>
+              {activeQCols.map((c) => <th key={c.key as string}>{c.label}</th>)}
               <th>Success</th>
               <th>Failure</th>
             </tr>
@@ -214,17 +235,19 @@ export default function RunDetailPage() {
                 onClick={() => setSelectedQuery(r.query_id)}>
                 <td className="mono">{r.query_id}</td>
                 <td><span className="tag">{r.difficulty}</span></td>
-                <td className="mono">{r.recall?.toFixed(3) ?? "—"}</td>
-                <td className="mono">{r.precision?.toFixed(3) ?? "—"}</td>
-                <td className="mono">{r.f1?.toFixed(3) ?? "—"}</td>
-                <td className="mono">{r.document_recall?.toFixed(3) ?? "—"}</td>
-                <td className="mono">{r.exact_match?.toFixed(3) ?? "—"}</td>
+                {activeQCols.map((c) => (
+                  <td key={c.key as string} className="mono">
+                    {(r[c.key] as number)?.toFixed(3) ?? "—"}
+                  </td>
+                ))}
                 <td>{r.success ? "✓" : "✗"}</td>
                 <td>{r.failure_type !== "success" ? r.failure_type : ""}</td>
               </tr>
             ))}
           </tbody>
         </table>
+          );
+        })()}
         {filteredRows.length > 200 && (
           <p style={{ color: "var(--color-text-muted)", fontSize: "0.8rem", marginTop: "0.5rem" }}>
             Showing first 200 of {filteredRows.length} rows.

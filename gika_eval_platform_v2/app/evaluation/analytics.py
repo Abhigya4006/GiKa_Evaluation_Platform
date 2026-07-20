@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from app.core.enums import ScopeType
 from app.core.utils import safe_div
@@ -28,9 +28,13 @@ def _avg(rows: List[Dict[str, Any]], key: str) -> float:
 
 
 def _scope_block(run_id: str, scope_type: str, scope_value: str,
-                 rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+                 rows: List[Dict[str, Any]],
+                 selected_metrics: Optional[set] = None) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
     for m in _AVG_METRICS:
+        # Skip metrics that the user didn't select.
+        if selected_metrics is not None and m not in selected_metrics:
+            continue
         out.append({
             "run_id": run_id, "scope_type": scope_type, "scope_value": scope_value,
             "metric_name": m, "metric_value": _avg(rows, m),
@@ -51,10 +55,27 @@ def aggregate_run(run_id: str, dataset_id: str) -> List[Dict[str, Any]]:
     metrics = repository.get_query_metrics(run_id)
     queries = {q["query_id"]: q for q in repository.get_queries(dataset_id)}
 
+    # Resolve selected metrics for this run.
+    import json as _json
+    run = repository.get_run(run_id)
+    _selected_set: Optional[set] = None
+    if run:
+        raw_sel = run.get("selected_metrics_json") or "[]"
+        if isinstance(raw_sel, str):
+            try:
+                sel_list = _json.loads(raw_sel)
+            except Exception:
+                sel_list = []
+        else:
+            sel_list = raw_sel
+        if sel_list:
+            _selected_set = set(sel_list)
+
     rows: List[Dict[str, Any]] = []
 
     # Overall.
-    rows += _scope_block(run_id, ScopeType.OVERALL.value, "all", metrics)
+    rows += _scope_block(run_id, ScopeType.OVERALL.value, "all", metrics,
+                         selected_metrics=_selected_set)
 
     # By difficulty.
     by_diff: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
@@ -72,10 +93,12 @@ def aggregate_run(run_id: str, dataset_id: str) -> List[Dict[str, Any]]:
         fail_counts[m.get("failure_type", "success")] += 1
 
     for diff, diff_rows in by_diff.items():
-        rows += _scope_block(run_id, ScopeType.DIFFICULTY.value, diff, diff_rows)
+        rows += _scope_block(run_id, ScopeType.DIFFICULTY.value, diff, diff_rows,
+                             selected_metrics=_selected_set)
 
     for cat, cat_rows in by_cat.items():
-        rows += _scope_block(run_id, ScopeType.CATEGORY.value, cat, cat_rows)
+        rows += _scope_block(run_id, ScopeType.CATEGORY.value, cat, cat_rows,
+                             selected_metrics=_selected_set)
 
     for ftype, count in fail_counts.items():
         rows.append({

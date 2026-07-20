@@ -38,6 +38,30 @@ def export_run(run_id: str) -> Dict[str, str]:
     out_dir = Path(settings.outputs_dir) / run_id
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # Resolve selected metrics for this run.
+    import json as _json
+    raw_sel = run.get("selected_metrics_json") or "[]"
+    if isinstance(raw_sel, str):
+        try:
+            selected_metrics_list = _json.loads(raw_sel)
+        except Exception:
+            selected_metrics_list = []
+    else:
+        selected_metrics_list = raw_sel
+    selected_set = set(selected_metrics_list) if selected_metrics_list else None
+
+    # Filter per-query field list to only include selected metrics.
+    _V1_METRIC_KEYS = {"recall", "precision", "f1", "document_recall",
+                       "exact_match", "semantic_similarity",
+                       "llm_judge_score", "llm_judge_verdict", "llm_judge_rationale"}
+    if selected_set:
+        active_fields = [
+            f for f in _PER_QUERY_FIELDS
+            if f not in _V1_METRIC_KEYS or f in selected_set
+        ]
+    else:
+        active_fields = list(_PER_QUERY_FIELDS)
+
     paths: Dict[str, str] = {}
 
     # 1) Per-query results (CSV + JSON).
@@ -54,13 +78,16 @@ def export_run(run_id: str) -> Dict[str, str]:
         if dm["metric_name"] not in dyn_metric_names:
             dyn_metric_names.append(dm["metric_name"])
 
-    # Exclude dynamic names that duplicate V1 fixed fields.
-    extra_dyn_names = [n for n in dyn_metric_names if n not in set(_PER_QUERY_FIELDS)]
-    export_fields = list(_PER_QUERY_FIELDS) + extra_dyn_names
+    # Exclude dynamic names that duplicate active fields.
+    extra_dyn_names = [n for n in dyn_metric_names if n not in set(active_fields)]
+    # Also filter dynamic metrics by selection if applicable.
+    if selected_set:
+        extra_dyn_names = [n for n in extra_dyn_names if n in selected_set]
+    export_fields = list(active_fields) + extra_dyn_names
 
     per_query_rows: List[Dict[str, Any]] = []
     for m in metrics:
-        row = {k: m.get(k) for k in _PER_QUERY_FIELDS}
+        row = {k: m.get(k) for k in active_fields}
         # Add dynamic metric columns.
         qid = m.get("query_id", "")
         for dn in extra_dyn_names:
@@ -70,7 +97,7 @@ def export_run(run_id: str) -> Dict[str, str]:
     paths["per_query_json"] = write_json_export(out_dir / "per_query_results.json", per_query_rows)
 
     # Also emit the brief's exact filename for per-query metrics.
-    paths["query_metrics_csv"] = write_csv(out_dir / "query_metrics.csv", per_query_rows, _PER_QUERY_FIELDS)
+    paths["query_metrics_csv"] = write_csv(out_dir / "query_metrics.csv", per_query_rows, active_fields)
 
     # 2) Aggregate summary (CSV + JSON). "aggregated_results.csv" matches the brief.
     aggregates = repository.get_aggregates(run_id)

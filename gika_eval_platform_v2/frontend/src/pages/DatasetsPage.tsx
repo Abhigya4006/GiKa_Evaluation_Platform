@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import {
   fetchDatasets,
   uploadDataset,
@@ -28,9 +28,13 @@ export default function DatasetsPage() {
   const [gtResult, setGtResult] = useState<GTMergeResult | null>(null);
   const [gtError, setGtError] = useState("");
 
+  // Upload progress (0–100, null when inactive).
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+
   // Ingest.
   const [ingestMsg, setIngestMsg] = useState("");
   const [ingestError, setIngestError] = useState("");
+  const [ingesting, setIngesting] = useState(false);
 
   const reload = () => {
     fetchDatasets()
@@ -41,7 +45,7 @@ export default function DatasetsPage() {
 
   useEffect(reload, []);
 
-  const handleUpload = async () => {
+  const handleUpload = useCallback(async () => {
     const file = fileRef.current?.files?.[0];
     if (!file) return;
 
@@ -51,18 +55,34 @@ export default function DatasetsPage() {
     setGtResult(null);
     setIngestMsg("");
     setIngestError("");
+    setUploadProgress(0);
+
+    // Smooth simulated progress: climb steadily towards 90% while the
+    // request is in flight, then jump to 100% on completion.
+    let pct = 0;
+    const timer = setInterval(() => {
+      pct += Math.max(1, Math.floor((92 - pct) * 0.08));
+      if (pct > 92) pct = 92;          // cap at 92 until real completion
+      setUploadProgress(pct);
+    }, 200);
 
     try {
       const result = await uploadDataset(file, dsId, dsName, dsVersion);
+      clearInterval(timer);
+      setUploadProgress(100);
       setUploadResult(result);
       setDsId(result.dataset_id);
       setDsName(result.name);
     } catch (e: unknown) {
+      clearInterval(timer);
+      setUploadProgress(null);
       setUploadError(e instanceof Error ? e.message : String(e));
     } finally {
       setUploading(false);
+      // Let the 100% state linger briefly, then hide the bar.
+      setTimeout(() => setUploadProgress(null), 800);
     }
-  };
+  }, [dsId, dsName, dsVersion]);
 
   const handleGtMerge = async () => {
     const file = gtRef.current?.files?.[0];
@@ -85,6 +105,7 @@ export default function DatasetsPage() {
     if (!uploadResult) return;
     setIngestError("");
     setIngestMsg("");
+    setIngesting(true);
     try {
       const result = await ingestDataset(uploadResult.dataset_id);
       setIngestMsg(result.message);
@@ -92,6 +113,8 @@ export default function DatasetsPage() {
       reload();
     } catch (e: unknown) {
       setIngestError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setIngesting(false);
     }
   };
 
@@ -236,6 +259,24 @@ export default function DatasetsPage() {
         <button className="btn btn-primary" onClick={handleUpload} disabled={uploading}>
           {uploading ? "Uploading…" : "Upload & Parse"}
         </button>
+        {uploadProgress !== null && (
+          <div style={{ marginTop: "0.5rem" }}>
+            <div style={{
+              background: "var(--color-border)", borderRadius: 4, height: 6,
+              overflow: "hidden", maxWidth: 320,
+            }}>
+              <div style={{
+                width: `${uploadProgress}%`, height: "100%",
+                background: uploadProgress < 100 ? "var(--color-primary)" : "var(--color-success)",
+                borderRadius: 4,
+                transition: "width 0.25s ease",
+              }} />
+            </div>
+            <span style={{ fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
+              {uploadProgress < 100 ? `Uploading… ${uploadProgress}%` : "Done ✓"}
+            </span>
+          </div>
+        )}
       </div>
 
       {uploadError && <div className="alert alert-error">{uploadError}</div>}
@@ -323,9 +364,27 @@ export default function DatasetsPage() {
 
           {/* Ingest */}
           <div style={{ marginTop: "1rem" }}>
-            <button className="btn btn-primary" onClick={handleIngest}>
-              💾 Ingest Dataset
+            <button className="btn btn-primary" onClick={handleIngest} disabled={ingesting}>
+              {ingesting ? "⏳ Ingesting…" : "💾 Ingest Dataset"}
             </button>
+            {ingesting && (
+              <div style={{ marginTop: "0.4rem" }}>
+                <div style={{
+                  background: "var(--color-border)", borderRadius: 4, height: 6,
+                  overflow: "hidden", maxWidth: 320, position: "relative",
+                }}>
+                  <div style={{
+                    width: "60%", height: "100%",
+                    background: "var(--color-primary)", borderRadius: 4,
+                    animation: "ingest-pulse 1.2s ease-in-out infinite alternate",
+                  }} />
+                </div>
+                <style>{`@keyframes ingest-pulse { from { width: 30%; } to { width: 90%; } }`}</style>
+                <span style={{ fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
+                  Ingesting into database…
+                </span>
+              </div>
+            )}
             {ingestMsg && <div className="alert alert-success" style={{ marginTop: "0.5rem" }}>{ingestMsg}</div>}
             {ingestError && <div className="alert alert-error" style={{ marginTop: "0.5rem" }}>{ingestError}</div>}
           </div>

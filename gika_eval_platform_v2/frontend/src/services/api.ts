@@ -62,6 +62,67 @@ export function uploadDataset(
   return request("/api/datasets/upload", { method: "POST", body: fd });
 }
 
+/**
+ * Upload with real progress tracking via XMLHttpRequest.
+ * onProgress receives a value between 0 and 100.
+ */
+export function uploadDatasetWithProgress(
+  file: File,
+  datasetId: string,
+  name: string,
+  version: string,
+  onProgress: (pct: number) => void,
+  csvMapping?: string,
+): Promise<UploadResult> {
+  return new Promise((resolve, reject) => {
+    const fd = new FormData();
+    fd.append("file", file);
+    fd.append("dataset_id", datasetId);
+    fd.append("name", name);
+    fd.append("version", version);
+    if (csvMapping) fd.append("csv_mapping", csvMapping);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", `${BASE}/api/datasets/upload`);
+
+    xhr.upload.addEventListener("progress", (e) => {
+      if (e.lengthComputable) {
+        // Upload portion is 0-80%; remaining 20% is server processing.
+        const pct = Math.round((e.loaded / e.total) * 80);
+        onProgress(pct);
+      }
+    });
+
+    xhr.upload.addEventListener("loadend", () => {
+      // File fully sent; server is now parsing/validating.
+      onProgress(85);
+    });
+
+    xhr.addEventListener("load", () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        onProgress(100);
+        try {
+          resolve(JSON.parse(xhr.responseText) as UploadResult);
+        } catch {
+          reject(new Error("Invalid JSON response"));
+        }
+      } else {
+        let detail = xhr.responseText;
+        try {
+          const parsed = JSON.parse(xhr.responseText);
+          detail = parsed.detail ?? xhr.responseText;
+        } catch { /* not JSON */ }
+        reject(new Error(`${xhr.status}: ${detail}`));
+      }
+    });
+
+    xhr.addEventListener("error", () => reject(new Error("Network error during upload")));
+    xhr.addEventListener("abort", () => reject(new Error("Upload aborted")));
+
+    xhr.send(fd);
+  });
+}
+
 export function mergeGroundTruth(
   file: File,
   datasetId: string,
